@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
+import globalStyles from 'src/config/globalStyles';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: globalStyles.Theme.backgroundColor,
   },
 });
 

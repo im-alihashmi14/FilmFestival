@@ -1,11 +1,20 @@
 import {StyleSheet} from 'react-native';
+import {heightRef, widthRef} from 'src/config/screenSize';
 
-const styles = StyleSheet.create({
+export default StyleSheet.create({
   container: {
     flex: 1,
+  },
+  row: {
+    height: heightRef * 70,
+    flexDirection: 'row',
+    paddingHorizontal: widthRef * 30,
+    justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'center',
+  },
+  logoImage: {
+    height: heightRef * 45,
+    width: widthRef * 100,
+    resizeMode: 'contain',
   },
 });
-
-export default styles;

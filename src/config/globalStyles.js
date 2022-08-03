@@ -4,13 +4,17 @@ const {StyleSheet} = require('react-native');
 export const MEDIA_HEIGHT = 295 * heightRef;
 const globalStyles = {
   Theme: {
-    backgroundColor: 'white',
+    backgroundColor: '#011826',
     // PrimaryColor: '#222780',
     PrimaryColor: '#212A6B',
     AccentPrimaryColor: '#EF4D97',
     SecondaryColor: '#3AC4F4',
     TextBackgroundColor: '#F4F8FF',
     rippleColor: '#3AC4F4',
+    liteBlue: '#2EAAE0',
+    gradientGray: ['#011826', '#23232357'],
+    buttonGradient: ['#68E7D4', '#55A8DD', '#6260FA'],
+    white: '#FFFFFF',
   },
 
   image: (height = '100%', width = '100%') => ({
