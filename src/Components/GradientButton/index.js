@@ -34,7 +34,7 @@ const GradientButton = ({
         style={style.container}
         start={{x: 0, y: 0}}
         colors={globalStyles.Theme.buttonGradient}>
-        <Text fontSize={fontRef * 10} color={globalStyles.Theme.white}>
+        <Text fontSize={14} color={globalStyles.Theme.white}>
           {text}
         </Text>
       </Gradient>

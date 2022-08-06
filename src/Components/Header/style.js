@@ -11,6 +11,7 @@ export default StyleSheet.create({
     paddingHorizontal: widthRef * 30,
     justifyContent: 'space-between',
     alignItems: 'center',
+    width: '100%',
   },
   logoImage: {
     height: heightRef * 45,
