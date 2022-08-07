@@ -15,6 +15,9 @@ const globalStyles = {
     gradientGray: ['#011826', '#23232357'],
     buttonGradient: ['#68E7D4', '#55A8DD', '#6260FA'],
     white: '#FFFFFF',
+    cyan: '#00ECD4',
+    placeholder: 'rgba(255,255,255, 0.3)',
+    liteGreen: '#7BFF88',
   },
 
   image: (height = '100%', width = '100%') => ({

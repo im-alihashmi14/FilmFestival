@@ -24,8 +24,7 @@ const GradientButton = ({
         style.main,
         {
           borderRadius: height ? height / 2 : heightRef * 30,
-          height: height ?? heightRef * 42,
-          width: width ?? widthRef * 120,
+          width: width,
         },
       ]}
       onPress={onPress}
@@ -51,6 +50,6 @@ const style = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1,
+    padding: heightRef * 15,
   },
 });

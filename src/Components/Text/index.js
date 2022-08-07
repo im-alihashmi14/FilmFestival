@@ -16,7 +16,7 @@ const Text = ({
   onPress,
   ...rest
 }: TextProps) => {
-  return (
+  return onPress ? (
     <TouchableOpacity disabled={!onPress} onPress={onPress}>
       <RNText
         style={[
@@ -34,6 +34,22 @@ const Text = ({
         {children}
       </RNText>
     </TouchableOpacity>
+  ) : (
+    <RNText
+      style={[
+        {
+          color,
+          fontWeight: bold !== undefined ? 'bold' : 'normal',
+          fontSize: fontSize * fontRef,
+          paddingVertical: paddingVertical * heightRef,
+          textAlignVertical,
+        },
+        width !== undefined ? {width} : {},
+        style,
+      ]}
+      {...rest}>
+      {children}
+    </RNText>
   );
 };
 

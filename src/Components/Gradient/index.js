@@ -1,4 +1,3 @@
-import {Blur} from '@shopify/react-native-skia';
 import React from 'react';
 import LinearGradient, {
   LinearGradientProps,

@@ -1,8 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
-import {useState} from 'react';
-import {ImageBackground, ScrollView} from 'react-native';
+import React, {useState} from 'react';
+import {ScrollView} from 'react-native';
 import Animated, {
   Extrapolate,
   interpolate,
@@ -10,7 +9,6 @@ import Animated, {
 } from 'react-native-reanimated';
 import Asset from 'src/Asset';
 import BlurBackground from 'src/Components/BlurBackground';
-import Carousel from 'src/Components/Carousel';
 import Paralax from 'src/Components/Carousel/Paralax';
 import Gradient from 'src/Components/Gradient';
 import GradientButton from 'src/Components/GradientButton';
@@ -74,7 +72,10 @@ const Home = () => {
   const [id, setIndex] = useState(0);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      contentContainerStyle={{paddingBottom: heightRef * 80}}
+      style={styles.container}
+      showsVerticalScrollIndicator={false}>
       <Gradient
         start={{x: 0, y: 0.5}}
         end={{x: 1, y: 0}}
@@ -83,7 +84,7 @@ const Home = () => {
           source={Asset.movies[id]}
           style={{
             alignSelf: 'center',
-            height: 754,
+            paddingBottom: heightRef * 45,
             alignItems: 'center',
             width: '100%',
           }}>
@@ -106,7 +107,7 @@ const Home = () => {
           />
 
           <View style={{width: '90%'}}>
-            <Text fontSize={22} color="white" paddingVertical={10}>
+            <Text fontSize={22} color="white">
               The World First Intractive
             </Text>
             <Text
@@ -116,12 +117,19 @@ const Home = () => {
               Streaming Platform
             </Text>
             <Text fontSize={22} color={'white'} paddingVertical={10}>
-              Connect, share, stream and sochialize only on{' '}
+              Connect, share, stream and sochialize only on
             </Text>
-            <GradientButton text={'GET STARTED'} />
+            <GradientButton
+              text={'GET STARTED'}
+              width={widthRef * 150}
+              onPress={() =>
+                nav.navigate('AuthStack', {
+                  screen: 'SignUp',
+                })
+              }
+            />
           </View>
         </BlurBackground>
-        <View style={{height: fullHeight - 200}} />
       </Gradient>
     </ScrollView>
   );
