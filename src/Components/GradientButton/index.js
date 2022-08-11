@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   StyleSheet,
@@ -23,14 +24,15 @@ const GradientButton = ({
       style={[
         style.main,
         {
+          height,
           borderRadius: height ? height / 2 : heightRef * 30,
-          width: width,
+          width,
         },
       ]}
       onPress={onPress}
       {...rest}>
       <Gradient
-        style={style.container}
+        style={[style.container, {padding: height ? 0 : heightRef * 15}]}
         start={{x: 0, y: 0}}
         colors={globalStyles.Theme.buttonGradient}>
         <Text fontSize={14} color={globalStyles.Theme.white}>
@@ -50,6 +52,6 @@ const style = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding: heightRef * 15,
+    flex: 1,
   },
 });

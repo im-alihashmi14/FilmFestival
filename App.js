@@ -9,11 +9,11 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {LogBox} from 'react-native';
+import RNBootSplash from 'react-native-bootsplash';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import HomeStack from 'src/Navigations/HomeStack';
 import {persistor, store} from 'src/Redux/ConfigureStore';
-import RNBootSplash from 'react-native-bootsplash';
 LogBox.ignoreAllLogs();
 
 const App = () => {

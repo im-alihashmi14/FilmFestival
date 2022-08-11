@@ -12,7 +12,7 @@ import Text from 'src/Components/Text';
 import TextInput from 'src/Components/TextInput';
 import View from 'src/Components/View';
 import globalStyles from 'src/config/globalStyles';
-import {heightRef, widthRef} from 'src/config/screenSize';
+import {fullWidth, heightRef, isPhone, widthRef} from 'src/config/screenSize';
 import Asset from 'src/Asset/index';
 import Icon from 'react-native-dynamic-vector-icons';
 import GradientButton from 'src/Components/GradientButton';
@@ -23,16 +23,19 @@ const Signup = () => {
   const nav = useNavigation();
   const [check, setCheck] = useState(false);
   return (
-    <ImageBackground
-      style={{flex: 1}}
-      source={require('src/Asset/Images/bgImage.png')}>
+    <ImageBackground style={{flex: 1}} source={Asset.bgImage}>
       <Gradient
         colors={['#011826', '#011826F9', '#011826D0']}
         style={style.main}>
-        <Header onPressIcon={() => {}} />
+        {isPhone && <Header onPressIcon={() => {}} nav={nav} />}
         <ScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={style.scroll}>
+          contentContainerStyle={[
+            style.scroll,
+            !isPhone && {
+              width: fullWidth * 0.7,
+            },
+          ]}>
           <Text style={style.textTop} color={globalStyles.Theme.white}>
             START YOUR MEMBERSHIP
           </Text>
@@ -60,15 +63,29 @@ const Signup = () => {
               Sign in
             </Text>
           </View>
-          <TextInput icon={Asset.profileIcon} placeholder="Full Name" />
-          <TextInput icon={Asset.profileIcon} placeholder="Username" />
-          <TextInput icon={Asset.emailIcon} placeholder="Email" />
-          <TextInput
-            icon={Asset.passwordIcon}
-            placeholder="Password"
-            isPassword
-          />
-          <View style={style.row}>
+          <View style={style.inputField}>
+            <TextInput icon={Asset.profileIcon} placeholder="Full Name" />
+            <TextInput icon={Asset.emailIcon} placeholder="Email" />
+          </View>
+          <View style={style.inputField}>
+            <TextInput
+              icon={Asset.passwordIcon}
+              placeholder="Password"
+              isPassword
+            />
+            <TextInput
+              icon={Asset.passwordIcon}
+              placeholder="Confirm Password"
+              isPassword
+            />
+          </View>
+          <View
+            style={[
+              style.row,
+              {
+                marginTop: heightRef * 10,
+              },
+            ]}>
             <TouchableOpacity
               style={style.check}
               onPress={() => setCheck(prev => !prev)}>
@@ -76,7 +93,7 @@ const Signup = () => {
                 <Icon
                   name="check"
                   type="Encrypto"
-                  color={globalStyles.Theme.PrimaryColor}
+                  color={globalStyles.Theme.white}
                   size={heightRef * 15}
                 />
               )}
@@ -86,6 +103,7 @@ const Signup = () => {
                 style.textInfo,
                 {
                   marginLeft: widthRef * 10,
+                  marginTop: 0,
                 },
               ]}
               color={globalStyles.Theme.white}
@@ -106,20 +124,27 @@ const Signup = () => {
               },
             ]}>
             <Text style={style.textInfo} color={globalStyles.Theme.white}>
-              or Sign Up with
+              or Use
             </Text>
           </View>
           <View
             style={[
               style.row,
               {
-                justifyContent: 'space-between',
+                justifyContent: 'center',
               },
             ]}>
-            <SocialButton icon={require('src/Asset/Images/facebook.png')} />
-            <SocialButton icon={require('src/Asset/Images/google.png')} />
+            <SocialButton
+              text={'Google'}
+              icon={require('src/Asset/Images/google.png')}
+            />
+            <View style={{width: '3%'}} />
+            <SocialButton
+              text={'Facebook'}
+              icon={require('src/Asset/Images/facebook.png')}
+            />
           </View>
-          <View
+          {/* <View
             style={[
               style.row,
               {
@@ -141,7 +166,7 @@ const Signup = () => {
                 Log in
               </Text>
             </Text>
-          </View>
+          </View> */}
         </ScrollView>
       </Gradient>
     </ImageBackground>
@@ -150,12 +175,11 @@ const Signup = () => {
 
 export default Signup;
 
-export const SocialButton = ({icon}) => {
+export const SocialButton = ({icon, text}) => {
   return (
-    <TouchableOpacity>
-      <Gradient colors={['#273055', '#294A5B']} style={style.button}>
-        <Image style={style.social} source={icon} />
-      </Gradient>
+    <TouchableOpacity style={style.button}>
+      <Image style={style.social} source={icon} />
+      <Text style={style.textBtn}>{text}</Text>
     </TouchableOpacity>
   );
 };

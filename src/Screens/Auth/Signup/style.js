@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import globalStyles from 'src/config/globalStyles';
-import {fontRef, heightRef, widthRef} from 'src/config/screenSize';
+import {fontRef, heightRef, isPhone, widthRef} from 'src/config/screenSize';
 
 export default StyleSheet.create({
   main: {
@@ -42,12 +42,22 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: widthRef * 165,
-    padding: heightRef * 17,
-    borderRadius: heightRef * 20,
+    padding: heightRef * 13,
+    borderRadius: heightRef * 10,
+    backgroundColor: '#2D313E',
+    flexDirection: 'row',
   },
   social: {
     height: heightRef * 20,
     width: heightRef * 20,
     resizeMode: 'contain',
+  },
+  inputField: {
+    flexDirection: isPhone ? 'column' : 'row',
+    justifyContent: 'space-between',
+  },
+  textBtn: {
+    color: globalStyles.Theme.white,
+    paddingLeft: widthRef * 10,
   },
 });

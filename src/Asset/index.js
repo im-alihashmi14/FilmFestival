@@ -1,3 +1,5 @@
+import {isPhone} from 'src/config/screenSize';
+
 export default {
   movies: [
     require('./Images/movie1.png'),
@@ -8,4 +10,7 @@ export default {
   profileIcon: require('./Images/profileIcon.png'),
   emailIcon: require('./Images/Message.png'),
   passwordIcon: require('./Images/Lock.png'),
+  bgImage: isPhone
+    ? require('./Images/bgImage.png')
+    : require('./Images/bgOther.png'),
 };

@@ -18,6 +18,7 @@ const globalStyles = {
     cyan: '#00ECD4',
     placeholder: 'rgba(255,255,255, 0.3)',
     liteGreen: '#7BFF88',
+    border: '#959292',
   },
 
   image: (height = '100%', width = '100%') => ({

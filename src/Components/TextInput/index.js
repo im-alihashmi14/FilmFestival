@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {
   StyleSheet,
@@ -6,7 +7,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-dynamic-vector-icons';
 import globalStyles from 'src/config/globalStyles';
-import {fontRef, heightRef, widthRef} from 'src/config/screenSize';
+import {fontRef, heightRef, isPhone, widthRef} from 'src/config/screenSize';
 import Image from '../Image';
 import View from '../View';
 
@@ -17,10 +18,11 @@ const TextInput = ({
   style,
   isPassword = false,
   textColor = globalStyles.Theme.cyan,
+  width = '49%',
 }: TextInputProps) => {
   const [visible, setVisible] = useState(isPassword);
   return (
-    <View style={[styles.main, style]}>
+    <View style={[styles.main, isPhone ? {flex: 1} : {width}, style]}>
       <Image source={icon} style={styles.icon} />
       <RNTextInput
         placeholder={placeholder}
@@ -38,6 +40,7 @@ const TextInput = ({
         <Icon
           name={visible ? 'eye-with-line' : 'eye'}
           type="Entypo"
+          size={fontRef * 14}
           color={'rgba(255, 255, 255, 0.6)'}
           style={styles.passwordIcon}
           onPress={() => setVisible(prev => !prev)}
@@ -51,7 +54,7 @@ export default TextInput;
 
 const styles = StyleSheet.create({
   main: {
-    height: heightRef * 57,
+    height: heightRef * 50,
     marginVertical: heightRef * 5,
     borderRadius: heightRef * 15,
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
@@ -60,8 +63,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   icon: {
-    height: widthRef * 30,
-    width: widthRef * 30,
+    height: isPhone ? widthRef * 30 : widthRef * 24,
+    width: isPhone ? widthRef * 30 : widthRef * 24,
     marginHorizontal: widthRef * 15,
   },
   input: {
