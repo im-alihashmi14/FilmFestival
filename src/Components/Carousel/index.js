@@ -27,6 +27,7 @@ const Carousel = ({
       data={data}
       width={fullWidth}
       height={400}
+      loop={false}
       customAnimation={anim => {
         'worklet';
         let inputRange = [index - 1, index, index + 1];
