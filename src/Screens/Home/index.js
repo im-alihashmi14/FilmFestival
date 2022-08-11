@@ -142,9 +142,12 @@ const Home = () => {
             fontSize={42}
             color={globalStyles.Theme.SecondaryColor}
             paddingVertical={10}>
-            Filmmaker Highlights
+            Sign Up Now
           </Text>
-          <PlaneFlatlist data={director} />
+          <Text fontSize={42} color={'white'} paddingVertical={10}>
+            to Watch Free Movies
+          </Text>
+          <PlaneFlatlist data={[...director, ...director]} />
         </View>
       </Gradient>
     </ScrollView>

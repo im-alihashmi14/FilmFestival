@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
-import Carousel from 'react-native-reanimated-carousel';
+import Carousel, {TCarouselProps} from 'react-native-reanimated-carousel';
 import Animated, {
   Extrapolate,
   interpolate,
@@ -27,7 +27,7 @@ function Paralax({
   onIndexChange = () => {},
   renderItem,
   ...rest
-}) {
+}: TCarouselProps) {
   const progressValue = useSharedValue<number>(0);
   const baseOptions = {
     vertical: false,
