@@ -21,7 +21,13 @@ const colors = [
   '#F1F1F1',
 ];
 
-function Paralax({data, height, onIndexChange = () => {}, renderItem}) {
+function Paralax({
+  data,
+  height,
+  onIndexChange = () => {},
+  renderItem,
+  ...rest
+}) {
   const progressValue = useSharedValue<number>(0);
   const baseOptions = {
     vertical: false,
@@ -53,12 +59,13 @@ function Paralax({data, height, onIndexChange = () => {}, renderItem}) {
         renderItem={({item, animationValue, index: i}) =>
           renderItem({item, animationValue, index: i, progressValue})
         }
+        {...rest}
       />
       {!!progressValue && (
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
             width: 100,
             alignSelf: 'center',
           }}>
@@ -117,6 +124,7 @@ const PaginationItem: React.FC<{
       style={{
         backgroundColor: 'white',
         width,
+        marginHorizontal: 7,
         height: width,
         marginTop: 40,
         borderRadius: 50,

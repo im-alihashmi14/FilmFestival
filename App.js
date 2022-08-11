@@ -8,7 +8,7 @@
 
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {LogBox} from 'react-native';
+import {LogBox, StatusBar} from 'react-native';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import HomeStack from 'src/Navigations/HomeStack';
@@ -20,6 +20,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
+        <StatusBar translucent backgroundColor="transparent" />
         <NavigationContainer
           onReady={() => {
             RNBootSplash.hide({fade: true});

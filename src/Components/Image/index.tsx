@@ -1,10 +1,17 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Image as RNImage, ImageProps, StyleSheet} from 'react-native';
+import {
+  Image as RNImage,
+  ImageBackground,
+  ImageProps,
+  StyleSheet,
+} from 'react-native';
 import {heightRef, widthRef} from 'src/config/screenSize';
+import View from '../View';
 
 interface Props extends ImageProps {
   size?: number;
+  dim?: number;
   height?: number | string;
   width?: number | string;
   color?: string;
@@ -17,6 +24,7 @@ const Image = ({
   style,
   color,
   resizeMode = 'contain',
+  dim = 0,
   ...rest
 }: Props) => {
   let imageHeight = typeof height === 'string' ? height : height * heightRef,
@@ -27,18 +35,25 @@ const Image = ({
   }
 
   return (
-    <RNImage
+    <ImageBackground
+      resizeMode={resizeMode}
       style={[
         {
           height: imageHeight,
           width: imageWidth,
-          resizeMode,
+          overflow: 'hidden',
         },
         color !== undefined ? {tintColor: color} : {},
         style,
       ]}
-      {...{...rest}}
-    />
+      {...{...rest}}>
+      <View
+        style={[
+          StyleSheet.absoluteFill,
+          {backgroundColor: `rgba(0,0,0,${dim / 10})`, flex: 1},
+        ]}
+      />
+    </ImageBackground>
   );
 };
 
