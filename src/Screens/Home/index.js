@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, Text as RNText} from 'react-native';
 import Animated, {
   Extrapolate,
   interpolate,
@@ -14,6 +14,9 @@ import Gradient from 'src/Components/Gradient';
 import GradientButton from 'src/Components/GradientButton';
 import Header from 'src/Components/Header';
 import Image from 'src/Components/Image';
+import ParalaxType1 from 'src/Components/RenderItems/ParalaxType1';
+import ParalaxType2 from 'src/Components/RenderItems/ParalaxType2';
+import PlaneFlatlist from 'src/Components/RenderItems/PlaneFlatlist';
 import Text from 'src/Components/Text';
 import View from 'src/Components/View';
 import globalStyles from 'src/config/globalStyles';
@@ -23,49 +26,11 @@ import {
   heightRef,
   widthRef,
 } from 'src/config/screenSize';
+import {director} from 'src/JSON/home';
 import styles from './style';
 
 const WIDTH = 211 * widthRef;
-const CustomItem = ({item, animationValue, length, index, progressValue}) => {
-  const style = useAnimatedStyle(() => {
-    let inputRange = [index - 1, index, index + 1];
-    let outputRange = [-WIDTH, 0, WIDTH];
-
-    if (index === 0 && progressValue?.value > length - 1) {
-      inputRange = [length - 1, length, length + 1];
-      outputRange = [-WIDTH * 1.5, 0, WIDTH * 1.5];
-    }
-    return {
-      alignSelf: 'center',
-      width: fullWidth,
-      height: 450 * heightRef,
-      zIndex:
-        progressValue.value > index - index / 2 &&
-        progressValue.value < index + index / 2
-          ? 1000
-          : -1000,
-      transform: [
-        {
-          translateX: interpolate(progressValue.value, inputRange, outputRange),
-        },
-        {
-          scale: interpolate(
-            progressValue.value,
-            inputRange,
-            [0.8, 1, 0.8],
-            Extrapolate.CLAMP,
-          ),
-        },
-      ],
-    };
-  }, [progressValue, index, length]);
-  console.log(progressValue.value, index);
-  return (
-    <Animated.View style={style}>
-      <Image source={item} />
-    </Animated.View>
-  );
-};
+const HEIGHT = 450 * heightRef;
 
 const Home = () => {
   const nav = useNavigation();
@@ -89,22 +54,7 @@ const Home = () => {
             width: '100%',
           }}>
           <Header />
-          <Paralax
-            onIndexChange={setIndex}
-            data={Asset.movies}
-            height={400}
-            renderItem={({item, animationValue, index, progressValue}) => (
-              <CustomItem
-                {...{
-                  item,
-                  animationValue,
-                  index,
-                  progressValue,
-                  length: Asset.movies.length,
-                }}
-              />
-            )}
-          />
+          <ParalaxType1 onIndexChange={setIndex} data={Asset.movies} />
 
           <View style={{width: '90%'}}>
             <Text fontSize={22} color="white">
@@ -130,6 +80,72 @@ const Home = () => {
             />
           </View>
         </BlurBackground>
+
+        <View
+          style={{
+            height: 400 * heightRef,
+            width: '100%',
+            padding: 30,
+            paddingVertical: 60,
+          }}>
+          <Image
+            width={288}
+            height={213}
+            source={Asset.movie4}
+            style={{
+              position: 'absolute',
+              top: 52 * heightRef,
+              left: 30 * widthRef,
+              borderRadius: 8,
+            }}
+            dim={5}
+          />
+          <View style={{flex: 1, justifyContent: 'flex-end'}}>
+            <Text fontSize={42} color="white">
+              Why Join
+            </Text>
+            <Text
+              fontSize={42}
+              color={globalStyles.Theme.SecondaryColor}
+              paddingVertical={10}>
+              FilmFestival?
+            </Text>
+          </View>
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'flex-end',
+            }}>
+            <Text
+              fontSize={17}
+              color="white"
+              style={{width: 290 * widthRef, lineHeight: 27 * heightRef}}>
+              We’ve created a unique streaming and social experience for movie
+              lovers and movie makers. It’s a place to watch movies, discover
+              filmmakers, and unheralded films, while discussing your favorite
+              actresses/actors and upcoming movies. SonderBlu is the only place
+              to Connect, Share, Stream, and Socialize around movies.
+            </Text>
+          </View>
+        </View>
+        <View style={{alignItems: 'center'}}>
+          <Text
+            fontSize={42}
+            color={globalStyles.Theme.SecondaryColor}
+            paddingVertical={10}>
+            Filmmaker Highlights
+          </Text>
+          <ParalaxType2 data={director} />
+        </View>
+        <View style={{alignItems: 'center'}}>
+          <Text
+            fontSize={42}
+            color={globalStyles.Theme.SecondaryColor}
+            paddingVertical={10}>
+            Filmmaker Highlights
+          </Text>
+          <PlaneFlatlist data={director} />
+        </View>
       </Gradient>
     </ScrollView>
   );
