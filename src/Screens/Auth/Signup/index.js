@@ -1,25 +1,26 @@
 /* eslint-disable react-native/no-inline-styles */
+import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {
+  Image,
   ImageBackground,
   ScrollView,
   TouchableOpacity,
-  Image,
 } from 'react-native';
+import Icon from 'react-native-dynamic-vector-icons';
+import Asset from 'src/Asset/index';
 import Gradient from 'src/Components/Gradient';
+import GradientButton from 'src/Components/GradientButton';
 import Header from 'src/Components/Header';
 import Text from 'src/Components/Text';
 import TextInput from 'src/Components/TextInput';
 import View from 'src/Components/View';
 import globalStyles from 'src/config/globalStyles';
-import {fullWidth, heightRef, isPhone, widthRef} from 'src/config/screenSize';
-import Asset from 'src/Asset/index';
-import Icon from 'react-native-dynamic-vector-icons';
-import GradientButton from 'src/Components/GradientButton';
-import {useNavigation} from '@react-navigation/native';
+import {useLayout} from 'src/Context/AppContext';
 import style from './style';
 
 const Signup = () => {
+  const {fullWidth, heightRef, isPhone, widthRef} = useLayout();
   const nav = useNavigation();
   const [check, setCheck] = useState(false);
   return (

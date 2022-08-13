@@ -1,15 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {ScrollView, Text as RNText} from 'react-native';
-import Animated, {
-  Extrapolate,
-  interpolate,
-  useAnimatedStyle,
-} from 'react-native-reanimated';
+import {ScrollView} from 'react-native';
 import Asset from 'src/Asset';
 import BlurBackground from 'src/Components/BlurBackground';
-import Paralax from 'src/Components/Carousel/Paralax';
 import Gradient from 'src/Components/Gradient';
 import GradientButton from 'src/Components/GradientButton';
 import Header from 'src/Components/Header';
@@ -20,19 +14,13 @@ import PlaneFlatlist from 'src/Components/RenderItems/PlaneFlatlist';
 import Text from 'src/Components/Text';
 import View from 'src/Components/View';
 import globalStyles from 'src/config/globalStyles';
-import {
-  fullHeight,
-  fullWidth,
-  heightRef,
-  widthRef,
-} from 'src/config/screenSize';
+import {getDimensions} from 'src/config/screenSize';
+import {useLayout} from 'src/Context/AppContext';
 import {director} from 'src/JSON/home';
 import styles from './style';
 
-const WIDTH = 211 * widthRef;
-const HEIGHT = 450 * heightRef;
-
 const Home = () => {
+  const {heightRef, widthRef, fullWidth} = useLayout();
   const nav = useNavigation();
   const [id, setIndex] = useState(0);
 
@@ -54,30 +42,40 @@ const Home = () => {
             width: '100%',
           }}>
           <Header />
-          <ParalaxType1 onIndexChange={setIndex} data={Asset.movies} />
+          <View deviceStyle={{Tablet: {flexDirection: 'row-reverse'}}}>
+            <View deviceStyle={{Tablet: {width: '30%'}}}>
+              <ParalaxType1
+                height={getDimensions({Tablet: 213, Handset: 309})}
+                WIDTH={getDimensions({Tablet: 160, Handset: 211})}
+                onIndexChange={setIndex}
+                data={Asset.movies}
+                width={fullWidth / 3}
+              />
+            </View>
 
-          <View style={{width: '90%'}}>
-            <Text fontSize={22} color="white">
-              The World First Intractive
-            </Text>
-            <Text
-              fontSize={35}
-              color={globalStyles.Theme.SecondaryColor}
-              paddingVertical={10}>
-              Streaming Platform
-            </Text>
-            <Text fontSize={22} color={'white'} paddingVertical={10}>
-              Connect, share, stream and sochialize only on
-            </Text>
-            <GradientButton
-              text={'GET STARTED'}
-              width={widthRef * 150}
-              onPress={() =>
-                nav.navigate('AuthStack', {
-                  screen: 'SignUp',
-                })
-              }
-            />
+            <View deviceStyle={{Tablet: {flex: 1, justifyContent: 'center'}}}>
+              <Text fontSize={22} color="white">
+                The World First Intractive
+              </Text>
+              <Text
+                fontSize={35}
+                color={globalStyles.Theme.SecondaryColor}
+                paddingVertical={10}>
+                Streaming Platform
+              </Text>
+              <Text fontSize={22} color={'white'} paddingVertical={10}>
+                Connect, share, stream and sochialize only on
+              </Text>
+              <GradientButton
+                text={'GET STARTED'}
+                width={widthRef * 150}
+                onPress={() =>
+                  nav.navigate('AuthStack', {
+                    screen: 'SignUp',
+                  })
+                }
+              />
+            </View>
           </View>
         </BlurBackground>
 
