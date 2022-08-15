@@ -14,10 +14,6 @@ const devices = {
     height: 515,
     width: 834,
   },
-  Tv: {
-    height: 1099,
-    width: 1920,
-  },
   unknown: {
     height: 515,
     width: 834,

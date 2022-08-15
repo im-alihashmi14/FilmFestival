@@ -5,10 +5,22 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 import Asset from 'src/Asset';
-import {fullWidth, heightRef, widthRef} from 'src/config/screenSize';
+import {getDimensions} from 'src/config/screenSize';
+import {useLayout} from 'src/Context/AppContext';
 import Paralax from '../Carousel/Paralax';
 import Image from '../Image';
-const CustomItem = ({item, animationValue, length, index, progressValue}) => {
+const CustomItem = ({
+  item,
+  animationValue,
+  HEIGHT,
+  width,
+  length,
+  index,
+  progressValue,
+}) => {
+  const {heightRef, widthRef, fullWidth} = useLayout();
+
+  const WIDTH = width * widthRef;
   const style = useAnimatedStyle(() => {
     let inputRange = [index - 1, index, index + 1];
     let outputRange = [-WIDTH, 0, WIDTH];
@@ -19,7 +31,7 @@ const CustomItem = ({item, animationValue, length, index, progressValue}) => {
     }
     return {
       alignSelf: 'center',
-      width: fullWidth,
+      width: '100%',
       height: HEIGHT,
       zIndex:
         progressValue.value > index - index / 2 &&
@@ -48,18 +60,21 @@ const CustomItem = ({item, animationValue, length, index, progressValue}) => {
   );
 };
 
-const WIDTH = 211 * widthRef;
-const HEIGHT = 450 * heightRef;
-const ParalaxType1 = ({data, onIndexChange}) => {
+const ParalaxType1 = ({data, height, style, WIDTH, onIndexChange}) => {
+  const {heightRef, fullWidth} = useLayout();
+  const HEIGHT = height * heightRef;
   return (
     <Paralax
       data={data}
       onIndexChange={onIndexChange}
       height={HEIGHT}
+      style={style}
       renderItem={({item, animationValue, index, progressValue}) => (
         <CustomItem
           {...{
             item,
+            HEIGHT,
+            width: WIDTH,
             animationValue,
             index,
             progressValue,

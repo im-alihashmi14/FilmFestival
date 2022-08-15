@@ -7,7 +7,7 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
-import {fullWidth} from 'src/config/screenSize';
+import {fullWidth, getDimensions} from 'src/config/screenSize';
 import View from '../View';
 import globalStyles from 'src/config/globalStyles';
 
@@ -95,7 +95,8 @@ const PaginationItem: React.FC<{
   isRotate?: boolean;
 }> = props => {
   const {animValue, index, length, backgroundColor, isRotate} = props;
-  const width = 10;
+
+  const width = getDimensions({Tablet: 40, Handset: 10});
 
   const animStyle = useAnimatedStyle(() => {
     let inputRange = [index - 1, index, index + 1];
@@ -125,7 +126,7 @@ const PaginationItem: React.FC<{
         backgroundColor: 'white',
         width,
         marginHorizontal: 7,
-        height: width,
+        height: getDimensions({Tablet: 4, Handset: 10}),
         marginTop: 40,
         borderRadius: 50,
         overflow: 'hidden',

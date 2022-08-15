@@ -6,7 +6,7 @@ import {
   TouchableOpacityProps,
 } from 'react-native';
 import globalStyles from 'src/config/globalStyles';
-import {heightRef} from 'src/config/screenSize';
+import {useLayout} from 'src/Context/AppContext';
 import Gradient from '../Gradient';
 import Text from '../Text';
 
@@ -18,6 +18,7 @@ const GradientButton = ({
   width,
   ...rest
 }: TouchableOpacityProps) => {
+  const {heightRef} = useLayout();
   return (
     <TouchableOpacity
       activeOpacity={0.6}
