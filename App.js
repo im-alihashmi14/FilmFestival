@@ -8,12 +8,8 @@
 
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-<<<<<<< HEAD
-import {LogBox} from 'react-native';
 import RNBootSplash from 'react-native-bootsplash';
-=======
 import {LogBox, StatusBar} from 'react-native';
->>>>>>> 7d815d5 (Flatlist...)
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import HomeStack from 'src/Navigations/HomeStack';

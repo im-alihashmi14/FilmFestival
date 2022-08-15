@@ -3,6 +3,7 @@ import DeviceInfo from 'react-native-device-info';
 
 export const device = DeviceInfo.getDeviceType();
 export const isPhone = device === 'Handset';
+export const isLandscape = DeviceInfo.isLandscape();
 
 const devices = {
   Handset: {

@@ -6,7 +6,7 @@ import {
   TouchableOpacityProps,
 } from 'react-native';
 import globalStyles from 'src/config/globalStyles';
-import {fontRef, heightRef, widthRef} from 'src/config/screenSize';
+import {heightRef} from 'src/config/screenSize';
 import Gradient from '../Gradient';
 import Text from '../Text';
 
