@@ -1,6 +1,17 @@
 import {Dimensions, ScaledSize} from 'react-native';
 import DeviceInfo, {DeviceType} from 'react-native-device-info';
 
+const getDeviceType = (): DeviceType => {
+  let {width} = Dimensions.get('screen');
+  if (width <= 700) {
+    return 'Handset';
+  } else if (width > 700 || width <= 1200) {
+    return 'Tablet';
+  } else if (width > 1200) {
+    return 'Tv';
+  }
+  return 'unknown';
+};
 export const device = DeviceInfo.getDeviceType() as DeviceType;
 export const isPhone = device === 'Handset';
 const devices: {[k in DeviceType]: {height: number; width: number}} = {
@@ -82,6 +93,16 @@ export class Layout {
   }
   get orientation(): 'Portrait' | 'Landscape' {
     return this.fullHeight > this.fullWidth ? 'Portrait' : 'Landscape';
+  }
+  get device(): DeviceType {
+    if (this.fullWidth <= 700) {
+      return 'Handset';
+    } else if (this.fullWidth > 700 || this.fullWidth <= 1200) {
+      return 'Tablet';
+    } else if (this.fullWidth > 1200) {
+      return 'Tv';
+    }
+    return 'unknown';
   }
 }
 export const InitialLayout = new Layout(Dimensions.get('screen'));

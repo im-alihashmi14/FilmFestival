@@ -7,11 +7,12 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
-import {fullWidth, getDimensions} from 'src/config/screenSize';
+import {getDimensions} from 'src/config/screenSize';
 import View from '../View';
 import globalStyles from 'src/config/globalStyles';
+import {useLayout} from 'src/Context/AppContext';
+import {useState} from 'react';
 
-const PAGE_WIDTH = fullWidth;
 const colors = [
   '#26292E',
   '#899F9C',
@@ -28,24 +29,33 @@ function Paralax({
   renderItem,
   ...rest
 }: TCarouselProps) {
+  const {fullWidth} = useLayout();
+  const [width, setWidth] = useState(fullWidth);
   const progressValue = useSharedValue<number>(0);
   const baseOptions = {
     vertical: false,
-    width: PAGE_WIDTH,
+    width,
   } as const;
 
   return (
     <View
+      onLayout={e => {
+        setWidth(e.nativeEvent.layout.width);
+      }}
       style={{
         alignItems: 'center',
         marginVertical: 30,
       }}>
       <Carousel
-        {...baseOptions}
+        style={{
+          justifyContent: 'center',
+          width,
+        }}
         loop
         height={height}
         pagingEnabled={true}
         autoPlayInterval={1500}
+        windowSize={5}
         onProgressChange={(_, absoluteProgress) => {
           onIndexChange(Math.floor(absoluteProgress));
           progressValue.value = absoluteProgress;
