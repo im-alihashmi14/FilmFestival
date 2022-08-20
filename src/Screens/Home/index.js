@@ -17,17 +17,17 @@ import globalStyles from 'src/config/globalStyles';
 import {getDimensions} from 'src/config/screenSize';
 import {useLayout} from 'src/Context/AppContext';
 import {director} from 'src/JSON/home';
-import styles from './style';
+import styles, {useStyles} from './style';
 
 const Home = () => {
   const {heightRef, widthRef, fullWidth} = useLayout();
   const nav = useNavigation();
   const [id, setIndex] = useState(0);
-
+  const Style = useStyles();
   return (
     <ScrollView
       contentContainerStyle={{paddingBottom: heightRef * 80}}
-      style={styles.container}
+      style={Style.container}
       showsVerticalScrollIndicator={false}>
       <Gradient
         start={{x: 0, y: 0.5}}
@@ -42,19 +42,19 @@ const Home = () => {
             width: '100%',
           }}>
           <Header />
-          <View deviceStyle={{Tablet: {flexDirection: 'row-reverse'}}}>
-            <View deviceStyle={{Tablet: {width: '30%'}}}>
+          <View style={Style.sliderContainer}>
+            <View style={Style.parallaxContainer}>
               <ParalaxType1
-                height={getDimensions({Tablet: 213, Handset: 309})}
-                WIDTH={getDimensions({Tablet: 160, Handset: 211})}
+                height={309}
+                WIDTH={211}
                 onIndexChange={setIndex}
                 data={Asset.movies}
-                width={fullWidth / 3}
+                style={{width: '100%'}}
               />
             </View>
 
-            <View deviceStyle={{Tablet: {flex: 1, justifyContent: 'center'}}}>
-              <Text fontSize={22} color="white">
+            <View style={Style.sliderTitleContainer}>
+              <Text fontSize={{Handset: 22, Tablet: 44}} color="white">
                 The World First Intractive
               </Text>
               <Text
@@ -80,25 +80,27 @@ const Home = () => {
         </BlurBackground>
 
         <View
+          deviceStyle={{Tablet: {flexDirection: 'row'}}}
+          height={{Handset: 400, Tablet: 258}}
           style={{
-            height: 400 * heightRef,
             width: '100%',
             padding: 30,
             paddingVertical: 60,
           }}>
-          <Image
-            width={288}
-            height={213}
-            source={Asset.movie4}
+          <View
+            width={{Tablet: 460, Handset: 288}}
+            height={{Handset: 213, Tablet: 258}}
             style={{
               position: 'absolute',
               top: 52 * heightRef,
               left: 30 * widthRef,
               borderRadius: 8,
-            }}
-            dim={5}
-          />
-          <View style={{flex: 1, justifyContent: 'flex-end'}}>
+            }}>
+            <Image source={Asset.movie4} dim={5} />
+          </View>
+          <View
+            style={{flex: 1, justifyContent: 'flex-end'}}
+            deviceStyle={{Tablet: {justifyContent: 'flex-start'}}}>
             <Text fontSize={42} color="white">
               Why Join
             </Text>

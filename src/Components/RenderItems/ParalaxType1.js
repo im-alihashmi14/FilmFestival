@@ -5,8 +5,6 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 import Asset from 'src/Asset';
-import {getDimensions} from 'src/config/screenSize';
-import {useLayout} from 'src/Context/AppContext';
 import Paralax from '../Carousel/Paralax';
 import Image from '../Image';
 const CustomItem = ({
@@ -18,16 +16,14 @@ const CustomItem = ({
   index,
   progressValue,
 }) => {
-  const {heightRef, widthRef, fullWidth} = useLayout();
-
-  const WIDTH = width * widthRef;
+  const WIDTH = width;
   const style = useAnimatedStyle(() => {
     let inputRange = [index - 1, index, index + 1];
     let outputRange = [-WIDTH, 0, WIDTH];
 
     if (index === 0 && progressValue?.value > length - 1) {
       inputRange = [length - 1, length, length + 1];
-      outputRange = [-WIDTH * 1.5, 0, WIDTH * 1.5];
+      outputRange = [-WIDTH * 2, 0, WIDTH * 2];
     }
     return {
       alignSelf: 'center',
@@ -55,19 +51,19 @@ const CustomItem = ({
   }, [progressValue, index, length]);
   return (
     <Animated.View style={style}>
-      <Image source={item} />
+      <Image source={item} resizeMode="contain" />
     </Animated.View>
   );
 };
 
 const ParalaxType1 = ({data, height, style, WIDTH, onIndexChange}) => {
-  const {heightRef, fullWidth} = useLayout();
-  const HEIGHT = height * heightRef;
+  const HEIGHT = height;
   return (
     <Paralax
       data={data}
       onIndexChange={onIndexChange}
       height={HEIGHT}
+      width={WIDTH}
       style={style}
       renderItem={({item, animationValue, index, progressValue}) => (
         <CustomItem
@@ -78,7 +74,7 @@ const ParalaxType1 = ({data, height, style, WIDTH, onIndexChange}) => {
             animationValue,
             index,
             progressValue,
-            length: Asset.movies.length,
+            length: data.length,
           }}
         />
       )}

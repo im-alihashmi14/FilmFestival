@@ -3,6 +3,16 @@ import React from 'react';
 import {Text as RNText, TextProps, TouchableOpacity} from 'react-native';
 import globalStyles from 'src/config/globalStyles';
 import {fontRef, heightRef} from 'src/config/screenSize';
+import {responsiveSize, Size} from 'src/Helper/Responsive';
+
+interface Props extends TextProps {
+  color?: string;
+  bold?: string;
+  width?: string | number;
+  fontSize?: Size;
+  paddingVertical?: number;
+  textAlignVertical?: 'auto' | 'top' | 'bottom' | 'center' | undefined;
+}
 
 const Text = ({
   color = globalStyles.Theme.PrimaryColor,
@@ -15,7 +25,7 @@ const Text = ({
   textAlignVertical = 'center',
   onPress,
   ...rest
-}: TextProps) => {
+}: Props) => {
   return onPress ? (
     <TouchableOpacity disabled={!onPress} onPress={onPress}>
       <RNText
@@ -23,8 +33,8 @@ const Text = ({
           {
             color,
             fontWeight: bold !== undefined ? 'bold' : 'normal',
-            fontSize: fontSize * fontRef,
-            paddingVertical: paddingVertical * heightRef,
+            fontSize: responsiveSize(fontSize),
+            paddingVertical: paddingVertical,
             textAlignVertical,
           },
           width !== undefined ? {width} : {},
@@ -40,8 +50,8 @@ const Text = ({
         {
           color,
           fontWeight: bold !== undefined ? 'bold' : 'normal',
-          fontSize: fontSize * fontRef,
-          paddingVertical: paddingVertical * heightRef,
+          fontSize: responsiveSize(fontSize),
+          paddingVertical: paddingVertical,
           textAlignVertical,
         },
         width !== undefined ? {width} : {},

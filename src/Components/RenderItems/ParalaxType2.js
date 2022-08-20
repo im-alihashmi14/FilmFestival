@@ -35,9 +35,9 @@ const CustomItem = ({item, animationValue, length, index, progressValue}) => {
           ? 1000
           : -1000,
       transform: [
-        {
-          translateX: interpolate(progressValue.value, inputRange, outputRange),
-        },
+        // {
+        //   translateX: interpolate(progressValue.value, inputRange, outputRange),
+        // },
         {
           scale: interpolate(
             progressValue.value,
@@ -75,6 +75,24 @@ const ParalaxType2 = ({data, onIndexChange}) => {
       data={data}
       onIndexChange={onIndexChange}
       height={HEIGHT}
+      width={WIDTH}
+      mode="parallax"
+      customAnimation={value => {
+        'worklet';
+
+        return {
+          zIndex: interpolate(value, [-1, 0, 1], [-1000, 1000, -1000]),
+          transform: [
+            {
+              translateX: interpolate(
+                value,
+                [-1, 0, 1],
+                [-WIDTH / 1.5, 0, WIDTH / 1.5],
+              ),
+            },
+          ],
+        };
+      }}
       renderItem={({item, animationValue, index, progressValue}) => (
         <CustomItem
           {...{
@@ -82,7 +100,7 @@ const ParalaxType2 = ({data, onIndexChange}) => {
             animationValue,
             index,
             progressValue,
-            length: Asset.movies.length,
+            length: data.length,
           }}
         />
       )}
