@@ -25,7 +25,11 @@ const App = () => {
       <AppContextProvider>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            <StatusBar translucent backgroundColor="transparent" />
+            <StatusBar
+              translucent
+              backgroundColor="transparent"
+              barStyle={'light-content'}
+            />
             <NavigationContainer
               onReady={() => {
                 RNBootSplash.hide({fade: true});

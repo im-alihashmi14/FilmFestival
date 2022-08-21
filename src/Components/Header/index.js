@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 import {Image, TouchableOpacity} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import style from './style';
@@ -11,6 +11,7 @@ import GradientButton from '../GradientButton';
 import OutlinedButton from '../OutlinedButton';
 import Text from '../Text';
 import {useNavigation, useRoute} from '@react-navigation/native';
+import Drawer from '../Drawer';
 const navigation = [
   {
     name: 'Home',
@@ -33,6 +34,7 @@ const navigation = [
 const Header = ({left, right, iconColor, onPressIcon, onlyLogo}) => {
   const route = useRoute();
   const nav = useNavigation();
+  const [visible, setVisible] = useState(false);
 
   const inset = useSafeAreaInsets();
   return (
@@ -83,7 +85,7 @@ const Header = ({left, right, iconColor, onPressIcon, onlyLogo}) => {
                 type="Ionicons"
                 size={heightRef * 30}
                 color={iconColor ?? globalStyles.Theme.liteBlue}
-                onPress={onPressIcon}
+                onPress={() => setVisible(true)}
               />
             ) : (
               <View
@@ -119,6 +121,7 @@ const Header = ({left, right, iconColor, onPressIcon, onlyLogo}) => {
             ))}
         </>
       )}
+      <Drawer visible={visible} setVisible={setVisible} />
     </View>
   );
 };

@@ -1,7 +1,5 @@
-import {StyleSheet} from 'react-native';
-import globalStyles from 'src/config/globalStyles';
 import {makeUseStyles} from 'react-native-stylex';
-import {maxWidth} from 'react-native-stylex/media-query';
+import globalStyles from 'src/config/globalStyles';
 
 export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
   sliderContainer: {
