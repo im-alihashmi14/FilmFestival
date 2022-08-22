@@ -1,14 +1,8 @@
-import {StyleSheet} from 'react-native';
+import {makeUseStyles} from 'react-native-stylex';
 import globalStyles from 'src/config/globalStyles';
-import {
-  fontRef,
-  fullWidth,
-  heightRef,
-  isPhone,
-  widthRef,
-} from 'src/config/screenSize';
+import {fontRef, heightRef, isPhone, widthRef} from 'src/config/screenSize';
 
-export default StyleSheet.create({
+export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
   container: {
     flex: 1,
   },
@@ -29,12 +23,25 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    display: 'none',
+    ...breakpoints.up('sm', {
+      display: 'flex',
+    }),
+  },
+  icon: {
+    ...breakpoints.up('sm', {
+      display: 'none',
+    }),
   },
   items: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-end',
     paddingRight: widthRef * 30,
+    display: 'none',
+    ...breakpoints.up('sm', {
+      display: 'flex',
+    }),
   },
   item: {
     color: globalStyles.Theme.white,
@@ -42,4 +49,4 @@ export default StyleSheet.create({
     fontWeight: '400',
     marginLeft: widthRef * 30,
   },
-});
+}));

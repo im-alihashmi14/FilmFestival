@@ -2,7 +2,6 @@
 import React, {useState} from 'react';
 import {Image, TouchableOpacity} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import style from './style';
 import View from '../View';
 import Icon from 'react-native-dynamic-vector-icons';
 import {fontRef, heightRef, isPhone, widthRef} from 'src/config/screenSize';
@@ -12,6 +11,7 @@ import OutlinedButton from '../OutlinedButton';
 import Text from '../Text';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import Drawer from '../Drawer';
+import {useStyles} from './style';
 const navigation = [
   {
     name: 'Home',
@@ -35,6 +35,7 @@ const Header = ({left, right, iconColor, onPressIcon, onlyLogo}) => {
   const route = useRoute();
   const nav = useNavigation();
   const [visible, setVisible] = useState(false);
+  const style = useStyles();
 
   const inset = useSafeAreaInsets();
   return (
@@ -57,28 +58,27 @@ const Header = ({left, right, iconColor, onPressIcon, onlyLogo}) => {
       )}
       {!onlyLogo && (
         <>
-          {!isPhone && (
-            <View style={style.items}>
-              {navigation.map((item, index) => (
-                <Text
-                  key={index.toString()}
-                  onPress={() => nav.navigate(item.route)}
-                  style={[
-                    style.item,
-                    {
-                      color:
-                        item.route === route.name
-                          ? globalStyles.Theme.white
-                          : globalStyles.Theme.border,
-                    },
-                  ]}>
-                  {item.name}
-                </Text>
-              ))}
-            </View>
-          )}
-          {right ??
-            (isPhone ? (
+          <View style={style.items}>
+            {navigation.map((item, index) => (
+              <Text
+                key={index.toString()}
+                onPress={() => nav.navigate(item.route)}
+                style={[
+                  style.item,
+                  {
+                    color:
+                      item.route === route.name
+                        ? globalStyles.Theme.white
+                        : globalStyles.Theme.border,
+                  },
+                ]}>
+                {item.name}
+              </Text>
+            ))}
+          </View>
+
+          {right ?? (
+            <>
               <Icon
                 style={style.icon}
                 name="md-menu-outline"
@@ -87,7 +87,6 @@ const Header = ({left, right, iconColor, onPressIcon, onlyLogo}) => {
                 color={iconColor ?? globalStyles.Theme.liteBlue}
                 onPress={() => setVisible(true)}
               />
-            ) : (
               <View
                 style={[
                   style.rowRight,
@@ -118,7 +117,8 @@ const Header = ({left, right, iconColor, onPressIcon, onlyLogo}) => {
                   width={widthRef * 100}
                 />
               </View>
-            ))}
+            </>
+          )}
         </>
       )}
       <Drawer visible={visible} setVisible={setVisible} />

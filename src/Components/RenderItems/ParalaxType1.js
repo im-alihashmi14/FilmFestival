@@ -4,7 +4,6 @@ import Animated, {
   interpolate,
   useAnimatedStyle,
 } from 'react-native-reanimated';
-import Asset from 'src/Asset';
 import Paralax from '../Carousel/Paralax';
 import Image from '../Image';
 const CustomItem = ({

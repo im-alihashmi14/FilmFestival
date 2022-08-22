@@ -15,19 +15,18 @@ import PlaneFlatlist from 'src/Components/RenderItems/PlaneFlatlist';
 import Text from 'src/Components/Text';
 import View from 'src/Components/View';
 import globalStyles from 'src/config/globalStyles';
-import {getDimensions} from 'src/config/screenSize';
 import {useLayout} from 'src/Context/AppContext';
 import {director} from 'src/JSON/home';
-import styles, {useStyles} from './style';
+import {useStyles} from './style';
 
 const Home = () => {
-  const {heightRef, widthRef, fullWidth} = useLayout();
+  const {heightRef, widthRef} = useLayout();
   const nav = useNavigation();
   const [id, setIndex] = useState(0);
   const Style = useStyles();
   return (
     <ScrollView
-      contentContainerStyle={{paddingBottom: heightRef * 80}}
+      contentContainerStyle={{paddingBottom: heightRef * 15}}
       style={Style.container}
       showsVerticalScrollIndicator={false}>
       <Gradient

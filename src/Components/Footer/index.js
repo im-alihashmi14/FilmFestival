@@ -1,14 +1,16 @@
 import React from 'react';
 import {useStyles} from './style';
 import View from '../View';
-import {Image} from 'react-native';
+import {Image, TouchableOpacity} from 'react-native';
 import {heightRef} from 'src/config/screenSize';
 import globalStyles from 'src/config/globalStyles';
 import Icon from 'react-native-dynamic-vector-icons';
 import Text from '../Text';
+import {useNavigation} from '@react-navigation/native';
 
 const Footer = () => {
   const style = useStyles();
+  const nav = useNavigation();
   return (
     <>
       <View style={style.main}>
@@ -68,14 +70,28 @@ const Footer = () => {
           <Text style={style.filmFestival}>From Film Festival</Text>
           <View style={style.row}>
             <View style={style.linkSection}>
-              <Text style={style.link}>Home</Text>
+              <Text style={style.link} onPress={() => nav.navigate('Home')}>
+                Home
+              </Text>
               <Text style={style.link}>Contact Us</Text>
+
               <Text style={style.link}>Blog</Text>
             </View>
             <View style={style.linkSection}>
-              <Text style={style.link}>Term & Conditions</Text>
-              <Text style={style.link}>Privacy & Policies</Text>
-              <Text style={style.link}>Q&A</Text>
+              <Text
+                style={style.link}
+                onPress={() => nav.navigate('TermsNConditions')}>
+                Term & Conditions
+              </Text>
+
+              <Text
+                style={style.link}
+                onPress={() => nav.navigate('PrivacyPolicy')}>
+                Privacy & Policies
+              </Text>
+              <Text style={style.link} onPress={() => nav.navigate('QandA')}>
+                Q&A
+              </Text>
             </View>
           </View>
         </View>

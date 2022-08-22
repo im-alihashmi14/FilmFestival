@@ -2,7 +2,6 @@
 import React from 'react';
 import {Text as RNText, TextProps, TouchableOpacity} from 'react-native';
 import globalStyles from 'src/config/globalStyles';
-import {fontRef, heightRef} from 'src/config/screenSize';
 import {responsiveSize, Size} from 'src/Helper/Responsive';
 
 interface Props extends TextProps {

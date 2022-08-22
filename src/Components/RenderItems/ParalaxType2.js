@@ -4,9 +4,8 @@ import Animated, {
   interpolate,
   useAnimatedStyle,
 } from 'react-native-reanimated';
-import Asset from 'src/Asset';
 import globalStyles from 'src/config/globalStyles';
-import {fullWidth, heightRef, widthRef} from 'src/config/screenSize';
+import {heightRef, widthRef} from 'src/config/screenSize';
 import Paralax from '../Carousel/Paralax';
 import Image from '../Image';
 import Text from '../Text';
