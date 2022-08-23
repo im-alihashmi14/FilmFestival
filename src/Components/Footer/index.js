@@ -1,12 +1,12 @@
-import React from 'react';
-import {useStyles} from './style';
-import View from '../View';
-import {Image, TouchableOpacity} from 'react-native';
-import {heightRef} from 'src/config/screenSize';
-import globalStyles from 'src/config/globalStyles';
-import Icon from 'react-native-dynamic-vector-icons';
-import Text from '../Text';
 import {useNavigation} from '@react-navigation/native';
+import React from 'react';
+import {Image} from 'react-native';
+import Icon from 'react-native-dynamic-vector-icons';
+import globalStyles from 'src/config/globalStyles';
+import {heightRef, isPhone} from 'src/config/screenSize';
+import Text from '../Text';
+import View from '../View';
+import {useStyles} from './style';
 
 const Footer = () => {
   const style = useStyles();
@@ -25,35 +25,35 @@ const Footer = () => {
                 style={style.icon}
                 name="facebook-f"
                 type="FontAwesome"
-                size={heightRef * 10}
+                size={isPhone ? heightRef * 10 : heightRef * 16}
                 color={globalStyles.Theme.white}
               />
               <Icon
                 style={style.icon}
                 name="instagram"
                 type="AntDesign"
-                size={heightRef * 10}
+                size={isPhone ? heightRef * 10 : heightRef * 16}
                 color={globalStyles.Theme.white}
               />
               <Icon
                 style={style.icon}
                 name="linkedin-square"
                 type="AntDesign"
-                size={heightRef * 10}
+                size={isPhone ? heightRef * 10 : heightRef * 16}
                 color={globalStyles.Theme.white}
               />
               <Icon
                 style={style.icon}
                 name="twitter"
                 type="AntDesign"
-                size={heightRef * 10}
+                size={isPhone ? heightRef * 10 : heightRef * 16}
                 color={globalStyles.Theme.white}
               />
               <Icon
                 style={style.icon}
                 name="youtube"
                 type="AntDesign"
-                size={heightRef * 10}
+                size={isPhone ? heightRef * 10 : heightRef * 16}
                 color={globalStyles.Theme.white}
               />
             </View>

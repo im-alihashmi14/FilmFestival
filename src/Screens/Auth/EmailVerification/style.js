@@ -60,10 +60,32 @@ export default StyleSheet.create({
     zIndex: 20,
   },
   otpContainer: {
-    height: heightRef * 30,
     width: '100%',
-    backgroundColor: 'red',
     marginTop: heightRef * 40,
-    marginBottom: heightRef * 10,
+    marginBottom: heightRef * 30,
+  },
+  input: {
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    color: 'transparent',
+  },
+  otpText: {
+    color: globalStyles.Theme.white,
+    fontSize: isPhone ? 35 * fontRef : fontRef * 45,
+  },
+  otpItem: {
+    marginHorizontal: isPhone ? widthRef * 9 : widthRef * 15,
+    width: isPhone ? 31 * heightRef : 50 * heightRef,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    borderBottomWidth: heightRef * 3,
+    borderBottomColor: globalStyles.Theme.white,
+    height: isPhone ? heightRef * 45 : heightRef * 60,
+  },
+  otp: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

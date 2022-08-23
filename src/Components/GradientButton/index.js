@@ -6,6 +6,7 @@ import {
   TouchableOpacityProps,
 } from 'react-native';
 import globalStyles from 'src/config/globalStyles';
+import {fontRef} from 'src/config/screenSize';
 import {useLayout} from 'src/Context/AppContext';
 import Gradient from '../Gradient';
 import Text from '../Text';
@@ -36,7 +37,7 @@ const GradientButton = ({
         style={[style.container, {padding: height ? 0 : heightRef * 15}]}
         start={{x: 0, y: 0}}
         colors={globalStyles.Theme.buttonGradient}>
-        <Text fontSize={14} color={globalStyles.Theme.white}>
+        <Text fontSize={14 * fontRef} color={globalStyles.Theme.white}>
           {text}
         </Text>
       </Gradient>

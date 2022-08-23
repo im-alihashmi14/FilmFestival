@@ -1,5 +1,10 @@
-import React from 'react';
-import {ImageBackground, KeyboardAvoidingView, ScrollView} from 'react-native';
+import React, {useState} from 'react';
+import {
+  ImageBackground,
+  KeyboardAvoidingView,
+  ScrollView,
+  TextInput,
+} from 'react-native';
 import Asset from 'src/Asset';
 import Gradient from 'src/Components/Gradient';
 import Header from 'src/Components/Header';
@@ -11,6 +16,7 @@ import {isPhone} from 'src/config/screenSize';
 import style from './style';
 
 const EmailVerification = () => {
+  const [otp, setOtp] = useState('');
   return (
     <KeyboardAvoidingView style={{flex: 1}}>
       <ImageBackground style={{flex: 1}} source={Asset.bgImage}>
@@ -26,7 +32,7 @@ const EmailVerification = () => {
               Please, enter it below to verify your email
             </Text>
             <Text style={style.email}>johndoe@gmail.com</Text>
-            <OTPInput />
+            <OTPInput setOtp={setOtp} otp={otp} />
             <Text
               style={[style.bottom, {color: globalStyles.Theme.white}]}
               onPress={() => {}}>
@@ -42,10 +48,38 @@ const EmailVerification = () => {
 
 export default EmailVerification;
 
-const OTPInput = () => {
+const OTPInput = ({setOtp, otp}) => {
   return (
     <View style={style.otpContainer}>
-      <Text style={style.otpText}>7</Text>
+      <View style={style.otp}>
+        {Array(6)
+          .fill('')
+          .map((i, j) => {
+            return (
+              <View
+                style={[
+                  style.otpItem,
+                  {
+                    borderBottomColor: otp.split('')[j]
+                      ? globalStyles.Theme.SecondaryColor
+                      : otp.length === j
+                      ? globalStyles.Theme.white
+                      : globalStyles.Theme.grayText,
+                  },
+                ]}>
+                <Text style={style.otpText}>{otp.split('')[j]}</Text>
+              </View>
+            );
+          })}
+      </View>
+      <TextInput
+        maxLength={6}
+        onChangeText={setOtp}
+        value={otp}
+        keyboardType={'numeric'}
+        caretHidden
+        style={style.input}
+      />
     </View>
   );
 };

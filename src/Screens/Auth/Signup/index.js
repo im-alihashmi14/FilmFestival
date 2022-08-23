@@ -17,11 +17,12 @@ import TextInput from 'src/Components/TextInput';
 import View from 'src/Components/View';
 import globalStyles from 'src/config/globalStyles';
 import {useLayout} from 'src/Context/AppContext';
-import style from './style';
+import {useStyles} from './style';
 
 const Signup = () => {
   const {fullWidth, heightRef, isPhone, widthRef} = useLayout();
   const nav = useNavigation();
+  const style = useStyles();
   const [check, setCheck] = useState(false);
   return (
     <ImageBackground style={{flex: 1}} source={Asset.bgImage}>
@@ -31,12 +32,7 @@ const Signup = () => {
         {isPhone && <Header onPressIcon={() => {}} nav={nav} />}
         <ScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={[
-            style.scroll,
-            !isPhone && {
-              width: fullWidth * 0.7,
-            },
-          ]}>
+          contentContainerStyle={[style.scroll]}>
           <Text style={style.textTop} color={globalStyles.Theme.white}>
             START YOUR MEMBERSHIP
           </Text>
@@ -116,7 +112,10 @@ const Signup = () => {
               </Text>
             </Text>
           </View>
-          <GradientButton text={'Sign Up'} />
+          <GradientButton
+            text={'Sign Up'}
+            onPress={() => nav.navigate('EmailVerification')}
+          />
           <View
             style={[
               style.row,
@@ -145,29 +144,6 @@ const Signup = () => {
               icon={require('src/Asset/Images/facebook.png')}
             />
           </View>
-          {/* <View
-            style={[
-              style.row,
-              {
-                justifyContent: 'center',
-              },
-            ]}>
-            <Text
-              style={[
-                style.textInfo,
-                {
-                  marginLeft: widthRef * 10,
-                },
-              ]}
-              color={globalStyles.Theme.white}
-              onPress={() => {}}>
-              Already have an account?
-              <Text style={style.textInfo} color={globalStyles.Theme.cyan}>
-                {' '}
-                Log in
-              </Text>
-            </Text>
-          </View> */}
         </ScrollView>
       </Gradient>
     </ImageBackground>
@@ -177,6 +153,7 @@ const Signup = () => {
 export default Signup;
 
 export const SocialButton = ({icon, text}) => {
+  const style = useStyles();
   return (
     <TouchableOpacity style={style.button}>
       <Image style={style.social} source={icon} />

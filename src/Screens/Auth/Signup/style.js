@@ -1,15 +1,16 @@
-import {StyleSheet} from 'react-native';
+import {makeUseStyles} from 'react-native-stylex';
 import globalStyles from 'src/config/globalStyles';
 import {fontRef, heightRef, isPhone, widthRef} from 'src/config/screenSize';
 
-export default StyleSheet.create({
+export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
   main: {
     flex: 1,
   },
   scroll: {
     paddingHorizontal: widthRef * 40,
-    paddingTop: heightRef * 30,
+    paddingTop: heightRef * 70,
     paddingBottom: heightRef * 60,
+    ...breakpoints.up('sm', {width: '60%'}),
   },
   textTop: {
     fontWeight: '300',
@@ -60,4 +61,4 @@ export default StyleSheet.create({
     color: globalStyles.Theme.white,
     paddingLeft: widthRef * 10,
   },
-});
+}));

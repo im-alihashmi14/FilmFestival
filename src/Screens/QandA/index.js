@@ -40,6 +40,46 @@ const data = [
     answer:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, massa amet, et diam tempus, quis lacinia. Accumsan lectus turpis tellus sit viverra pulvinar.',
   },
+  {
+    question: 'Is there any free trail on film festival?',
+    answer:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, massa amet, et diam tempus, quis lacinia. Accumsan lectus turpis tellus sit viverra pulvinar.',
+  },
+  {
+    question: 'Is there any free trail on film festival?',
+    answer:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, massa amet, et diam tempus, quis lacinia. Accumsan lectus turpis tellus sit viverra pulvinar.',
+  },
+  {
+    question: 'Is there any free trail on film festival?',
+    answer:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, massa amet, et diam tempus, quis lacinia. Accumsan lectus turpis tellus sit viverra pulvinar.',
+  },
+  {
+    question: 'Is there any free trail on film festival?',
+    answer:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, massa amet, et diam tempus, quis lacinia. Accumsan lectus turpis tellus sit viverra pulvinar.',
+  },
+  {
+    question: 'Is there any free trail on film festival?',
+    answer:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, massa amet, et diam tempus, quis lacinia. Accumsan lectus turpis tellus sit viverra pulvinar.',
+  },
+  {
+    question: 'Is there any free trail on film festival?',
+    answer:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, massa amet, et diam tempus, quis lacinia. Accumsan lectus turpis tellus sit viverra pulvinar.',
+  },
+  {
+    question: 'Is there any free trail on film festival?',
+    answer:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, massa amet, et diam tempus, quis lacinia. Accumsan lectus turpis tellus sit viverra pulvinar.',
+  },
+  {
+    question: 'Is there any free trail on film festival?',
+    answer:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, massa amet, et diam tempus, quis lacinia. Accumsan lectus turpis tellus sit viverra pulvinar.',
+  },
 ];
 
 const QandA = () => {
@@ -58,17 +98,21 @@ const QandA = () => {
           here
         </Text>
         <View style={style.section}>
-          <Text style={style.topText}>Support</Text>
-          <Text style={style.title2}>FAQ’s</Text>
-          <Text style={style.topText}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, massa
-            amet, et diam tempus, quis lacinia. Accumsan lectus turpis tellus
-            sit viverra pulvinar pretium neque purus. Sodales nulla cursus
-            turpis nisl amet ipsum at etiam velit.
-          </Text>
-          {data.map((item, index) => {
-            return <QnA item={item} key={index} />;
-          })}
+          <View style={style.left}>
+            <Text style={style.topText}>Support</Text>
+            <Text style={style.title2}>FAQ’s</Text>
+            <Text style={style.topText}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet,
+              massa amet, et diam tempus, quis lacinia. Accumsan lectus turpis
+              tellus sit viverra pulvinar pretium neque purus. Sodales nulla
+              cursus turpis nisl amet ipsum at etiam velit.
+            </Text>
+          </View>
+          <View style={style.right}>
+            {data.map((item, index) => {
+              return <QnA item={item} key={index} />;
+            })}
+          </View>
         </View>
       </View>
       <Footer />

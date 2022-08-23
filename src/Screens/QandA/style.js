@@ -1,6 +1,6 @@
 import {makeUseStyles} from 'react-native-stylex';
 import globalStyles from 'src/config/globalStyles';
-import {fontRef, heightRef, widthRef} from 'src/config/screenSize';
+import {fontRef, heightRef, isPhone, widthRef} from 'src/config/screenSize';
 
 export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
   main: {
@@ -9,10 +9,10 @@ export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
   },
   container: {
     paddingHorizontal: widthRef * 30,
-    paddingVertical: heightRef * 10,
+    paddingVertical: heightRef * 20,
   },
   topText: {
-    fontSize: fontRef * 14,
+    fontSize: isPhone ? fontRef * 14 : fontRef * 20,
     fontWeight: '400',
     color: globalStyles.Theme.white,
   },
@@ -30,9 +30,9 @@ export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
   },
   section: {
     marginTop: heightRef * 30,
+    ...breakpoints.up('sm', {flexDirection: 'row'}),
   },
   qna: {
-    // backgroundColor: 'red',
     marginTop: heightRef * 20,
   },
   row: {
@@ -41,20 +41,27 @@ export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
     alignItems: 'center',
   },
   question: {
-    fontSize: fontRef * 14,
+    fontSize: isPhone ? fontRef * 14 : fontRef * 20,
     fontWeight: '500',
     color: globalStyles.Theme.white,
   },
   answer: {
-    fontSize: fontRef * 10,
+    fontSize: isPhone ? fontRef * 10 : fontRef * 14,
     fontWeight: '400',
     color: globalStyles.Theme.white,
-    lineHeight: fontRef * 15,
+    lineHeight: isPhone ? fontRef * 15 : fontRef * 21,
   },
   answerContainer: {
     paddingTop: heightRef * 10,
     paddingBottom: heightRef * 20,
     borderBottomWidth: heightRef,
     borderBottomColor: globalStyles.Theme.border,
+  },
+  left: {
+    flex: 0.45,
+    ...breakpoints.up('sm', {marginRight: widthRef * 30}),
+  },
+  right: {
+    flex: 0.55,
   },
 }));

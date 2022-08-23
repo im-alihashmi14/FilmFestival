@@ -1,6 +1,6 @@
 import {makeUseStyles} from 'react-native-stylex';
 import globalStyles from 'src/config/globalStyles';
-import {fontRef, heightRef, widthRef} from 'src/config/screenSize';
+import {fontRef, heightRef, isPhone, widthRef} from 'src/config/screenSize';
 
 export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
   main: {
@@ -19,16 +19,17 @@ export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
     alignSelf: 'center',
   },
   left: {
-    flex: 1,
+    flex: 0.5,
+    paddingHorizontal: widthRef * 10,
     flexDirection: 'row',
   },
   textLeft: {
     flex: 0.5,
-    fontSize: fontRef * 7,
+    fontSize: isPhone ? fontRef * 7 : fontRef * 12,
     color: globalStyles.Theme.white,
   },
   right: {
-    flex: 1,
+    flex: 0.5,
     paddingHorizontal: widthRef * 20,
   },
   logoImage: {
@@ -50,7 +51,7 @@ export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
   },
   filmFestival: {
     color: globalStyles.Theme.white,
-    fontSize: fontRef * 10,
+    fontSize: isPhone ? fontRef * 10 : fontRef * 16,
     fontWeight: '500',
   },
   linkSection: {
@@ -62,7 +63,7 @@ export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
     marginTop: heightRef * 12,
   },
   link: {
-    fontSize: fontRef * 8,
+    fontSize: isPhone ? fontRef * 8 : fontRef * 12,
     fontWeight: '300',
     color: globalStyles.Theme.white,
     marginBottom: heightRef * 8,

@@ -10,12 +10,13 @@ import Text from 'src/Components/Text';
 import TextInput from 'src/Components/TextInput';
 import View from 'src/Components/View';
 import globalStyles from 'src/config/globalStyles';
-import {fullWidth, heightRef, isPhone, widthRef} from 'src/config/screenSize';
+import {heightRef, isPhone, widthRef} from 'src/config/screenSize';
 import {SocialButton} from '../Signup';
-import style from '../Signup/style';
+import {useStyles} from '../Signup/style';
 
 const Login = () => {
   const [check, setCheck] = useState(false);
+  const style = useStyles();
   return (
     <ImageBackground style={{flex: 1}} source={Asset.bgImage}>
       <Gradient
@@ -24,12 +25,7 @@ const Login = () => {
         {isPhone && <Header onPressIcon={() => {}} />}
         <ScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={[
-            style.scroll,
-            !isPhone && {
-              width: fullWidth * 0.5,
-            },
-          ]}>
+          contentContainerStyle={style.scroll}>
           <Text style={style.textTop} color={globalStyles.Theme.white}>
             Welcome Back
           </Text>
