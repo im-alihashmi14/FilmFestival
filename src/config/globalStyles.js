@@ -1,11 +1,10 @@
 import {heightRef, widthRef} from './screenSize';
 
-const {StyleSheet} = require('react-native');
 export const MEDIA_HEIGHT = 295 * heightRef;
 const globalStyles = {
   Theme: {
     backgroundColor: '#011826',
-    // PrimaryColor: '#222780',
+    darkBlue: '#000021',
     PrimaryColor: '#212A6B',
     AccentPrimaryColor: '#EF4D97',
     SecondaryColor: '#3AC4F4',

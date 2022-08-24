@@ -7,6 +7,7 @@ import EmailVerification from 'src/Screens/Auth/EmailVerification';
 import TermsNConditions from 'src/Screens/TermsNConditions';
 import PrivacyPolicy from 'src/Screens/PrivacyPolicy';
 import QandA from 'src/Screens/QandA';
+import ContactUs from 'src/Screens/ContactUs';
 const Stack = createStackNavigator();
 
 const HomeStack = () => {
@@ -45,6 +46,11 @@ const HomeStack = () => {
       <Stack.Screen
         name="QandA"
         component={QandA}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ContactUs"
+        component={ContactUs}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

@@ -73,8 +73,11 @@ const Footer = () => {
               <Text style={style.link} onPress={() => nav.navigate('Home')}>
                 Home
               </Text>
-              <Text style={style.link}>Contact Us</Text>
-
+              <Text
+                onPress={() => nav.navigate('ContactUs')}
+                style={style.link}>
+                Contact Us
+              </Text>
               <Text style={style.link}>Blog</Text>
             </View>
             <View style={style.linkSection}>
