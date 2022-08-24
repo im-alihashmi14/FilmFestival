@@ -26,8 +26,8 @@ const CustomItem = ({item, length, index}) => {
   );
 };
 
-const WIDTH = 126 * widthRef;
-const HEIGHT = 188 * heightRef;
+const WIDTH = 126;
+const HEIGHT = 188;
 const PlaneFlatlist = ({data, ...rest}) => {
   return (
     <FlatList

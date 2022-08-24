@@ -5,7 +5,8 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 import globalStyles from 'src/config/globalStyles';
-import {heightRef, widthRef} from 'src/config/screenSize';
+import {fullWidth, heightRef, widthRef} from 'src/config/screenSize';
+import {useLayout} from 'src/Context/AppContext';
 import Paralax from '../Carousel/Paralax';
 import Image from '../Image';
 import Text from '../Text';
@@ -66,9 +67,10 @@ const CustomItem = ({item, animationValue, length, index, progressValue}) => {
   );
 };
 
-const WIDTH = 280 * widthRef;
-const HEIGHT = 200 * heightRef;
+const WIDTH = 280;
+const HEIGHT = 200;
 const ParalaxType2 = ({data, onIndexChange}) => {
+  const {fullWidth} = useLayout();
   return (
     <Paralax
       data={data}

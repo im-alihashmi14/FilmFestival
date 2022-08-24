@@ -28,15 +28,8 @@ const CustomItem = ({
       alignSelf: 'center',
       width: '100%',
       height: HEIGHT,
-      zIndex:
-        progressValue.value > index - index / 2 &&
-        progressValue.value < index + index / 2
-          ? 1000
-          : -1000,
+
       transform: [
-        {
-          translateX: interpolate(progressValue.value, inputRange, outputRange),
-        },
         {
           scale: interpolate(
             progressValue.value,
@@ -64,6 +57,22 @@ const ParalaxType1 = ({data, height, style, WIDTH, onIndexChange}) => {
       height={HEIGHT}
       width={WIDTH}
       style={style}
+      customAnimation={value => {
+        'worklet';
+
+        return {
+          zIndex: interpolate(value, [-1, 0, 1], [-1000, 1000, -1000]),
+          transform: [
+            {
+              translateX: interpolate(
+                value,
+                [-1, 0, 1],
+                [-WIDTH / 1.5, 0, WIDTH / 1.5],
+              ),
+            },
+          ],
+        };
+      }}
       renderItem={({item, animationValue, index, progressValue}) => (
         <CustomItem
           {...{

@@ -10,7 +10,7 @@ export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
     ...breakpoints.up('sm', {width: '35%'}),
   },
   sliderTitleContainer: {
-    ...breakpoints.up('sm', {width: '50%', justifyContent: 'center'}),
+    ...breakpoints.up('sm', {width: '65%', justifyContent: 'center'}),
   },
   container: {
     flex: 1,

@@ -4,7 +4,6 @@ import React, {useState} from 'react';
 import {ScrollView} from 'react-native';
 import Asset from 'src/Asset';
 import BlurBackground from 'src/Components/BlurBackground';
-import Footer from 'src/Components/Footer';
 import Gradient from 'src/Components/Gradient';
 import GradientButton from 'src/Components/GradientButton';
 import Header from 'src/Components/Header';
@@ -20,13 +19,13 @@ import {director} from 'src/JSON/home';
 import {useStyles} from './style';
 
 const Home = () => {
-  const {heightRef, widthRef} = useLayout();
+  const {heightRef, widthRef, fullWidth} = useLayout();
   const nav = useNavigation();
   const [id, setIndex] = useState(0);
   const Style = useStyles();
   return (
     <ScrollView
-      contentContainerStyle={{paddingBottom: heightRef * 15}}
+      contentContainerStyle={{paddingBottom: heightRef * 80}}
       style={Style.container}
       showsVerticalScrollIndicator={false}>
       <Gradient
@@ -150,7 +149,6 @@ const Home = () => {
           <PlaneFlatlist data={[...director, ...director]} />
         </View>
       </Gradient>
-      <Footer />
     </ScrollView>
   );
 };
