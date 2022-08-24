@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 import {ScrollView} from 'react-native';
 import Asset from 'src/Asset';
 import BlurBackground from 'src/Components/BlurBackground';
+import Footer from 'src/Components/Footer';
 import Gradient from 'src/Components/Gradient';
 import GradientButton from 'src/Components/GradientButton';
 import Header from 'src/Components/Header';
@@ -148,6 +149,7 @@ const Home = () => {
           </Text>
           <PlaneFlatlist data={[...director, ...director]} />
         </View>
+        <Footer />
       </Gradient>
     </ScrollView>
   );
