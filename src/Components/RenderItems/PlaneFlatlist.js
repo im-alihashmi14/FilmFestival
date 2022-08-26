@@ -14,7 +14,7 @@ const CustomItem = ({item, length, index}) => {
         source={item.image}
         resizeMode="cover"
         style={{position: 'absolute'}}
-        dim={5}
+        dim={item.dim ?? 5}
       />
       <View style={{padding: 8}}>
         <Text color="white">{item.name}</Text>

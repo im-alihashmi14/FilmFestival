@@ -20,4 +20,18 @@ export default {
   bgImage: isPhone
     ? require('./Images/bgImage.png')
     : require('./Images/bgOther.png'),
+  Movies: [
+    require('./movies/1.png'),
+    require('./movies/2.png'),
+    require('./movies/3.png'),
+    require('./movies/4.png'),
+    require('./movies/5.png'),
+    require('./movies/6.png'),
+  ],
+  Diretors: [
+    require('./directors/1.png'),
+    require('./directors/2.png'),
+    require('./directors/3.png'),
+    require('./directors/4.png'),
+  ],
 };

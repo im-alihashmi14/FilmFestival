@@ -16,7 +16,8 @@ import Text from 'src/Components/Text';
 import View from 'src/Components/View';
 import globalStyles from 'src/config/globalStyles';
 import {useLayout} from 'src/Context/AppContext';
-import {director} from 'src/JSON/home';
+import {responsiveSize} from 'src/Helper/Responsive';
+import {director, Directors, Movies, slider} from 'src/JSON/home';
 import {useStyles} from './style';
 
 const Home = () => {
@@ -48,8 +49,8 @@ const Home = () => {
                 height={309}
                 WIDTH={211}
                 onIndexChange={setIndex}
-                data={Asset.movies}
-                style={{width: '100%'}}
+                data={slider}
+                style={{width: '100%', justifyContent: 'center'}}
               />
             </View>
 
@@ -81,15 +82,15 @@ const Home = () => {
 
         <View
           deviceStyle={{Tablet: {flexDirection: 'row'}}}
-          height={{Handset: 400, Tablet: 258}}
-          style={{
-            width: '100%',
-            padding: 30,
-            paddingVertical: 60,
-          }}>
+          style={Style.festivalCOntainer}>
           <View
             width={{Tablet: 460, Handset: 288}}
-            height={{Handset: 213, Tablet: 258}}
+            height={213}
+            deviceStyle={{
+              Tablet: {
+                top: 0,
+              },
+            }}
             style={{
               position: 'absolute',
               top: 52 * heightRef,
@@ -119,7 +120,11 @@ const Home = () => {
             <Text
               fontSize={17}
               color="white"
-              style={{width: 290 * widthRef, lineHeight: 27 * heightRef}}>
+              style={{
+                width: 290 * widthRef,
+                lineHeight:
+                  responsiveSize({Tablet: 21, Handset: 27}) * heightRef,
+              }}>
               We’ve created a unique streaming and social experience for movie
               lovers and movie makers. It’s a place to watch movies, discover
               filmmakers, and unheralded films, while discussing your favorite
@@ -147,7 +152,23 @@ const Home = () => {
           <Text fontSize={42} color={'white'} paddingVertical={10}>
             to Watch Free Movies
           </Text>
-          <PlaneFlatlist data={[...director, ...director]} />
+          <PlaneFlatlist data={Movies} />
+        </View>
+        <View style={{alignItems: 'center'}}>
+          <Text fontSize={42} color={'white'} paddingVertical={10}>
+            Directors
+          </Text>
+          <PlaneFlatlist data={Directors} />
+          <GradientButton
+            text={'Sign up'}
+            width={widthRef * 150}
+            style={{marginVertical: 40}}
+            onPress={() =>
+              nav.navigate('AuthStack', {
+                screen: 'SignUp',
+              })
+            }
+          />
         </View>
         <Footer />
       </Gradient>
