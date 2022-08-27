@@ -43,7 +43,7 @@ const CustomItem = ({item, animationValue, length, index, progressValue}) => {
             progressValue.value,
             inputRange,
             [0.8, 1, 0.8],
-            Extrapolate.CLAMP,
+            Extrapolate.EXTEND,
           ),
         },
       ],
