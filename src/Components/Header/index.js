@@ -113,7 +113,7 @@ const Header = ({left, right, iconColor, onPressIcon, onlyLogo}) => {
                     })
                   }
                   textSize={fontRef * 10}
-                  height={heightRef * 35}
+                  // height={heightRef * 35}
                   width={widthRef * 100}
                 />
               </View>

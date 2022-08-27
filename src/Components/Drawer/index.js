@@ -4,7 +4,7 @@ import Icon from 'react-native-dynamic-vector-icons';
 import ReactNativeModal from 'react-native-modal';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import globalStyles from 'src/config/globalStyles';
-import {fullHeight, fullWidth, heightRef} from 'src/config/screenSize';
+import {fullHeight, fullWidth} from 'src/config/screenSize';
 import Gradient from '../Gradient';
 import Text from '../Text';
 import View from '../View';
@@ -17,13 +17,19 @@ const Drawer = ({visible, setVisible}) => {
     <ReactNativeModal
       isVisible={visible}
       transparent
-      style={{height: fullHeight, width: fullWidth}}
-      animationOut={'fadeOutRight'}
-      animationIn={'fadeInRight'}>
+      style={{height: fullHeight, width: fullWidth, margin: 0}}
+      animationOut={'fadeOutLeft'}
+      animationIn={'fadeInLeft'}>
       <Pressable style={style.drawer} onPress={() => setVisible(false)}>
         <Pressable onPress={() => {}} style={style.container}>
           <Gradient
-            colors={['#23232357', '#0F1D25B9', '#011826', '#011826', '#011826']}
+            colors={[
+              'rgba(15, 29, 37, 0.725556)',
+              '#0F1D25B9',
+              '#011826',
+              '#011826',
+              '#011826',
+            ]}
             style={{flex: 1}}
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}>

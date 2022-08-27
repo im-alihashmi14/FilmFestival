@@ -7,17 +7,18 @@ import Animated, {
 import globalStyles from 'src/config/globalStyles';
 import {fullWidth, heightRef, widthRef} from 'src/config/screenSize';
 import {useLayout} from 'src/Context/AppContext';
+import {responsiveSize} from 'src/Helper/Responsive';
 import Paralax from '../Carousel/Paralax';
 import Image from '../Image';
 import Text from '../Text';
 import View from '../View';
 const CustomItem = ({item, animationValue, length, index, progressValue}) => {
   const style = useAnimatedStyle(() => {
-    let inputRange = [index - 1, index, index + 1];
+    let inputRange = [index - 2, index - 1, index, index + 1, index + 2];
     let outputRange = [-WIDTH, 0, WIDTH];
 
     if (index === 0 && progressValue?.value > length - 1) {
-      inputRange = [length - 1, length, length + 1];
+      inputRange = [length - 2, length - 1, length, length + 1, length + 2];
       outputRange = [-WIDTH * 1.5, 0, WIDTH * 1.5];
     }
     return {
@@ -42,7 +43,7 @@ const CustomItem = ({item, animationValue, length, index, progressValue}) => {
           scale: interpolate(
             progressValue.value,
             inputRange,
-            [0.8, 1, 0.8],
+            [0.5, 0.8, 1, 0.8, 0.5],
             Extrapolate.CLAMP,
           ),
         },
@@ -67,8 +68,8 @@ const CustomItem = ({item, animationValue, length, index, progressValue}) => {
   );
 };
 
-const WIDTH = 280;
-const HEIGHT = 200;
+const WIDTH = responsiveSize({Tablet: 326, Handset: 280}) * widthRef;
+const HEIGHT = responsiveSize({Tablet: 229, Handset: 200}) * heightRef;
 const ParalaxType2 = ({data, onIndexChange}) => {
   const {fullWidth} = useLayout();
   return (

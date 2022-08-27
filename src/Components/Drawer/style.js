@@ -10,7 +10,7 @@ export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
   },
   drawer: {
     flex: 1,
-    alignItems: 'flex-end',
+    alignItems: 'flex-start',
     // ...breakpoints.up('sm', {display: 'none'}),
   },
   icon: top => ({

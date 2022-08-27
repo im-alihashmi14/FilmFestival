@@ -43,7 +43,7 @@ const CustomItem = ({
   }, [progressValue, index, length]);
   return (
     <Animated.View style={style}>
-      <Image source={item} resizeMode="contain" />
+      <Image source={item.image} resizeMode="contain" />
     </Animated.View>
   );
 };
@@ -66,8 +66,9 @@ const ParalaxType1 = ({data, height, style, WIDTH, onIndexChange}) => {
             {
               translateX: interpolate(
                 value,
-                [-1, 0, 1],
-                [-WIDTH / 1.5, 0, WIDTH / 1.5],
+                [-2, -1, 0, 1, 2],
+                [-WIDTH / 1.5, -WIDTH / 2, 0, WIDTH / 2, WIDTH / 1.5],
+                Extrapolate.CLAMP,
               ),
             },
           ],
