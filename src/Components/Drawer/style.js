@@ -9,7 +9,7 @@ export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
   },
   drawer: {
     flex: 1,
-    alignItems: 'flex-start',
+    alignItems: 'flex-end',
   },
   icon: top => ({
     position: 'absolute',

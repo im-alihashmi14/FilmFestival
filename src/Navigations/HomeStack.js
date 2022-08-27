@@ -8,6 +8,8 @@ import TermsNConditions from 'src/Screens/TermsNConditions';
 import PrivacyPolicy from 'src/Screens/PrivacyPolicy';
 import QandA from 'src/Screens/QandA';
 import ContactUs from 'src/Screens/ContactUs';
+import Payment from 'src/Screens/Auth/Payment';
+import PaymentSummary from 'src/Screens/Auth/Payment/Summary';
 const Stack = createStackNavigator();
 
 const HomeStack = () => {
@@ -51,6 +53,16 @@ const HomeStack = () => {
       <Stack.Screen
         name="ContactUs"
         component={ContactUs}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Payment"
+        component={Payment}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PaymentSummary"
+        component={PaymentSummary}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

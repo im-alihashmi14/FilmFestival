@@ -20,7 +20,7 @@ import {useLayout} from 'src/Context/AppContext';
 import {useStyles} from './style';
 
 const Signup = () => {
-  const {fullWidth, heightRef, isPhone, widthRef} = useLayout();
+  const {heightRef, isPhone, widthRef} = useLayout();
   const nav = useNavigation();
   const style = useStyles();
   const [check, setCheck] = useState(false);

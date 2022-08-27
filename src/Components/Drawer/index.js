@@ -22,7 +22,6 @@ const Drawer = ({visible, setVisible}) => {
         height: fullHeight,
         width: fullWidth,
         margin: 0,
-        alignItems: 'flex-end',
       }}
       animationOut={'fadeOutRight'}
       animationIn={'fadeInRight'}>

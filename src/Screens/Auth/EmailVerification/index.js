@@ -1,14 +1,9 @@
-import React, {useState} from 'react';
-import {
-  ImageBackground,
-  KeyboardAvoidingView,
-  ScrollView,
-  TextInput,
-} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import {ImageBackground, KeyboardAvoidingView, TextInput} from 'react-native';
 import Asset from 'src/Asset';
 import Gradient from 'src/Components/Gradient';
 import Header from 'src/Components/Header';
-import Image from 'src/Components/Image';
 import Text from 'src/Components/Text';
 import View from 'src/Components/View';
 import globalStyles from 'src/config/globalStyles';
@@ -16,7 +11,11 @@ import {isPhone} from 'src/config/screenSize';
 import style from './style';
 
 const EmailVerification = () => {
+  const nav = useNavigation();
   const [otp, setOtp] = useState('');
+  useEffect(() => {
+    otp.length === 6 && nav.navigate('Payment');
+  }, [nav, otp]);
   return (
     <KeyboardAvoidingView style={{flex: 1}}>
       <ImageBackground style={{flex: 1}} source={Asset.bgImage}>
@@ -57,6 +56,7 @@ const OTPInput = ({setOtp, otp}) => {
           .map((i, j) => {
             return (
               <View
+                key={j}
                 style={[
                   style.otpItem,
                   {
