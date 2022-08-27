@@ -47,26 +47,32 @@ export const slider = [
 export const Movies = [
   {
     image: Asset.Movies[0],
+    name: 'Men of Steel',
     dim: 0,
   },
   {
     image: Asset.Movies[1],
+    name: 'Star Wars',
     dim: 0,
   },
   {
     image: Asset.Movies[2],
+    name: 'Alita Battel Angel',
     dim: 0,
   },
   {
     image: Asset.Movies[3],
+    name: 'Sabrina',
     dim: 0,
   },
   {
     image: Asset.Movies[4],
+    name: 'Point Break',
     dim: 0,
   },
   {
     image: Asset.Movies[5],
+    name: 'Army of thieves',
     dim: 0,
   },
 ];

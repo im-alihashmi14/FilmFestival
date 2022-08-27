@@ -9,6 +9,7 @@ import Gradient from 'src/Components/Gradient';
 import GradientButton from 'src/Components/GradientButton';
 import Header from 'src/Components/Header';
 import Image from 'src/Components/Image';
+import GridList from 'src/Components/RenderItems/GridList';
 import ParalaxType1 from 'src/Components/RenderItems/ParalaxType1';
 import ParalaxType2 from 'src/Components/RenderItems/ParalaxType2';
 import PlaneFlatlist from 'src/Components/RenderItems/PlaneFlatlist';
@@ -153,12 +154,14 @@ const Home = () => {
             to Watch Free Movies
           </Text>
           <PlaneFlatlist data={Movies} />
+          <GridList data={Movies} />
         </View>
         <View style={{alignItems: 'center'}}>
           <Text fontSize={42} color={'white'} paddingVertical={10}>
             Directors
           </Text>
           <PlaneFlatlist data={Directors} />
+
           <GradientButton
             text={'Sign up'}
             width={widthRef * 150}

@@ -9,36 +9,41 @@ import Text from '../Text';
 import View from '../View';
 const CustomItem = ({item, length, index}) => {
   return (
-    <View style={styles.renderItem}>
-      <Image
-        source={item.image}
-        resizeMode="cover"
-        style={{position: 'absolute'}}
-        dim={item.dim ?? 5}
-      />
-      <View style={{padding: 8}}>
-        <Text color="white">{item.name}</Text>
-        <Text color="white" bold>
-          {item.qoute}
-        </Text>
+    <View>
+      <View style={styles.renderItem}>
+        <Image
+          source={item.image}
+          resizeMode="cover"
+          style={{position: 'absolute'}}
+          dim={item.dim ?? 5}
+        />
+        <View style={{padding: 8}}>
+          <Text color="white" bold>
+            {item.qoute}
+          </Text>
+        </View>
       </View>
+      <Text paddingVertical={5} color="white">
+        {'  '} {item.name}
+      </Text>
     </View>
   );
 };
 
-const WIDTH = 126;
-const HEIGHT = 188;
+const WIDTH = 126 * widthRef;
+const HEIGHT = 188 * heightRef;
 const PlaneFlatlist = ({data, ...rest}) => {
   return (
     <FlatList
       data={data}
+      style={{width: '90%'}}
       horizontal
       renderItem={({item, index}) => (
         <CustomItem
           {...{
             item,
             index,
-            length: Asset.movies.length,
+            length: data.length,
           }}
         />
       )}
