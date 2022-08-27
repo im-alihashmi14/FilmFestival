@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {Pressable, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-dynamic-vector-icons';
@@ -17,9 +18,14 @@ const Drawer = ({visible, setVisible}) => {
     <ReactNativeModal
       isVisible={visible}
       transparent
-      style={{height: fullHeight, width: fullWidth, margin: 0}}
-      animationOut={'fadeOutLeft'}
-      animationIn={'fadeInLeft'}>
+      style={{
+        height: fullHeight,
+        width: fullWidth,
+        margin: 0,
+        alignItems: 'flex-end',
+      }}
+      animationOut={'fadeOutRight'}
+      animationIn={'fadeInRight'}>
       <Pressable style={style.drawer} onPress={() => setVisible(false)}>
         <Pressable onPress={() => {}} style={style.container}>
           <Gradient

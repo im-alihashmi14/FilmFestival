@@ -6,12 +6,10 @@ export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
   container: {
     flex: 1,
     backgroundColor: 'transparent',
-    width: '60%',
   },
   drawer: {
     flex: 1,
     alignItems: 'flex-start',
-    // ...breakpoints.up('sm', {display: 'none'}),
   },
   icon: top => ({
     position: 'absolute',
