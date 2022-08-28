@@ -6,6 +6,7 @@ import Asset from 'src/Asset/index';
 import Gradient from 'src/Components/Gradient';
 import GradientButton from 'src/Components/GradientButton';
 import Header from 'src/Components/Header';
+import RadioButton from 'src/Components/RadioButton';
 import Text from 'src/Components/Text';
 import TextInput from 'src/Components/TextInput';
 import View from 'src/Components/View';
@@ -71,18 +72,7 @@ const Login = () => {
                 marginTop: heightRef * 10,
               },
             ]}>
-            <TouchableOpacity
-              style={style.check}
-              onPress={() => setCheck(prev => !prev)}>
-              {check && (
-                <Icon
-                  name="check"
-                  type="Encrypto"
-                  color={globalStyles.Theme.white}
-                  size={heightRef * 15}
-                />
-              )}
-            </TouchableOpacity>
+            <RadioButton check={check} setCheck={setCheck} />
             <Text
               style={[
                 style.textInfo,

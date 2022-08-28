@@ -106,7 +106,7 @@ const Payment = () => {
 
 export default Payment;
 
-const CheckText = ({text}) => {
+export const CheckText = ({text}) => {
   const style = useStyles();
   return (
     <View style={style.textCheckView}>

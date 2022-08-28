@@ -112,10 +112,10 @@ const ContactUs = () => {
 
 export default ContactUs;
 
-const InputField = ({placeholder, multiline = false}) => {
+export const InputField = ({placeholder, multiline = false, width}) => {
   const style = useStyles();
   return (
-    <View style={style.textInputContainer}>
+    <View style={[style.textInputContainer, {width: width ?? '90%'}]}>
       <TextInput
         multiline={multiline}
         numberOfLines={5}
