@@ -11,7 +11,7 @@ import Text from '../Text';
 import View from '../View';
 import {useStyles} from './style';
 
-const Drawer = ({visible, setVisible}) => {
+const Drawer = ({visible, setVisible, nav}) => {
   const style = useStyles();
   const inset = useSafeAreaInsets();
   return (
@@ -51,6 +51,15 @@ const Drawer = ({visible, setVisible}) => {
               <Item name="Search" />
               <Item name="Spotlight Series" />
               <Item
+                name="Biography"
+                onPress={() => {
+                  setVisible(false);
+                  setTimeout(() => {
+                    nav.navigate('Biography');
+                  }, 1000);
+                }}
+              />
+              <Item
                 name="Podcasts"
                 subItems={[
                   {name: 'Fashion'},
@@ -78,14 +87,17 @@ const Drawer = ({visible, setVisible}) => {
 
 export default Drawer;
 
-const Item = ({name, subItems}) => {
+const Item = ({name, subItems, onPress = () => {}}) => {
   const style = useStyles();
   const [visible, setVisible] = useState(false);
   return (
     <View style={{marginBottom: '10%'}}>
       <TouchableOpacity
         style={style.item}
-        onPress={() => setVisible(prev => !prev)}>
+        onPress={() => {
+          setVisible(prev => !prev);
+          onPress();
+        }}>
         <Text style={style.itemText}>{name}</Text>
         {subItems ? (
           <Icon

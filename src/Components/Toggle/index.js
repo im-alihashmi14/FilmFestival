@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Pressable} from 'react-native';
+import Animated, {Layout} from 'react-native-reanimated';
 import {makeUseStyles} from 'react-native-stylex';
 import globalStyles from 'src/config/globalStyles';
 import {heightRef, widthRef} from 'src/config/screenSize';
@@ -23,7 +24,7 @@ const Toggle = ({toggle, setToggle}) => {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         colors={['#6260FA', '#F60ACB']}>
-        <View style={style.dot} />
+        <Animated.View layout={Layout.springify()} style={style.dot} />
       </Gradient>
     </Pressable>
   );

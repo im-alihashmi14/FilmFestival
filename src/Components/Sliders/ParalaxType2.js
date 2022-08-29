@@ -70,7 +70,7 @@ const CustomItem = ({item, animationValue, length, index, progressValue}) => {
 
 const WIDTH = responsiveSize({Tablet: 326, Handset: 280}) * widthRef;
 const HEIGHT = responsiveSize({Tablet: 229, Handset: 200}) * heightRef;
-const ParalaxType2 = ({data, onIndexChange}) => {
+const ParalaxType2 = ({data, onIndexChange, pagingEnabled}) => {
   const {fullWidth} = useLayout();
   return (
     <Paralax
@@ -79,6 +79,7 @@ const ParalaxType2 = ({data, onIndexChange}) => {
       height={HEIGHT}
       width={WIDTH}
       mode="parallax"
+      pagingEnabled={pagingEnabled}
       customAnimation={value => {
         'worklet';
 

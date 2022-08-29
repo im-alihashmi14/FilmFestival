@@ -29,6 +29,10 @@ const navigation = [
     name: 'Home',
     route: 'Home3',
   },
+  {
+    name: 'Biography',
+    route: 'Biography',
+  },
 ];
 
 const Header = ({left, right, iconColor, onPressIcon, onlyLogo}) => {
@@ -121,7 +125,7 @@ const Header = ({left, right, iconColor, onPressIcon, onlyLogo}) => {
           )}
         </>
       )}
-      <Drawer visible={visible} setVisible={setVisible} />
+      <Drawer visible={visible} setVisible={setVisible} nav={nav}/>
     </View>
   );
 };

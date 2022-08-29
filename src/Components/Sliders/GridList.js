@@ -54,8 +54,8 @@ const Section = ({data}) => {
     </View>
   );
 };
-const WIDTH = responsiveSize({Tablet: 324, Handset: 280}) * widthRef;
-const HEIGHT = responsiveSize({Tablet: 376, Handset: 200}) * heightRef;
+const WIDTH = responsiveSize({Tablet: 324, Handset: 228}) * widthRef;
+const HEIGHT = responsiveSize({Tablet: 376, Handset: 318}) * heightRef;
 const GridList = ({data, ...rest}) => {
   return (
     <ScrollView
@@ -63,7 +63,7 @@ const GridList = ({data, ...rest}) => {
       snapToInterval={fullWidth}
       contentContainerStyle={{justifyContent: 'center'}}
       horizontal>
-      {chunk(data, 5).map((d, i) => (
+      {chunk(data, responsiveSize({Tablet: 5, Handset: 3})).map((d, i) => (
         <Section data={d} />
       ))}
     </ScrollView>
@@ -72,7 +72,7 @@ const GridList = ({data, ...rest}) => {
 
 const styles = StyleSheet.create({
   wrapContainer: {
-    height: HEIGHT,
+    height: HEIGHT + 25,
     width: fullWidth,
     justifyContent: 'space-between',
     flexWrap: 'wrap',
@@ -80,15 +80,16 @@ const styles = StyleSheet.create({
   },
   renderItem: s => ({
     alignSelf: 'center',
-    width: s ? WIDTH : responsiveSize({Tablet: 190, Handset: 280}) * widthRef,
+    width: s ? WIDTH : responsiveSize({Tablet: 190, Handset: 165}) * widthRef,
     height: s
-      ? HEIGHT
-      : responsiveSize({Tablet: 183, Handset: 200}) * heightRef,
+      ? '100%'
+      : responsiveSize({Tablet: 183, Handset: 160}) * heightRef,
     borderRadius: 5,
     overflow: 'hidden',
     borderColor: globalStyles.Theme.SecondaryColor,
     justifyContent: 'flex-end',
     marginRight: 15 * widthRef,
+    // margin: 5,
   }),
 });
 

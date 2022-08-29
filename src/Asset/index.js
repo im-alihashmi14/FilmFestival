@@ -34,4 +34,5 @@ export default {
     require('./directors/3.png'),
     require('./directors/4.png'),
   ],
+  check: require('./icons/check.png'),
 };

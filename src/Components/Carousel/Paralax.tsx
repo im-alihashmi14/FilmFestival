@@ -27,6 +27,7 @@ function Paralax({
   height,
   onIndexChange = () => {},
   renderItem,
+  pagingEnabled,
   ...rest
 }: TCarouselProps) {
   const {fullWidth} = useLayout();
@@ -53,7 +54,7 @@ function Paralax({
         }}
         loop
         height={height}
-        pagingEnabled={true}
+        pagingEnabled={pagingEnabled}
         autoPlayInterval={1500}
         windowSize={5}
         onProgressChange={(_, absoluteProgress) => {
@@ -71,7 +72,7 @@ function Paralax({
         }
         {...rest}
       />
-      {!!progressValue && (
+      {pagingEnabled && !!progressValue && (
         <View
           style={{
             flexDirection: 'row',

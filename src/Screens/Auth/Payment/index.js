@@ -7,18 +7,22 @@ import Asset from 'src/Asset';
 import Gradient from 'src/Components/Gradient';
 import GradientButton from 'src/Components/GradientButton';
 import Header from 'src/Components/Header';
+import PaymentPlan from 'src/Components/Sliders/PaymentPlan';
 import Text from 'src/Components/Text';
 import Toggle from 'src/Components/Toggle';
 import View from 'src/Components/View';
 import globalStyles from 'src/config/globalStyles';
 import {fontRef, heightRef, isPhone, widthRef} from 'src/config/screenSize';
 import {responsiveSize} from 'src/Helper/Responsive';
+import {director} from 'src/JSON/home';
+import {payment} from 'src/JSON/payment';
 import {useStyles} from './style';
 
 const Payment = () => {
   const style = useStyles();
   const nav = useNavigation();
   const [toggle, setToggle] = useState(false);
+
   return (
     <ImageBackground style={{flex: 1}} source={Asset.bgImage}>
       <Gradient
@@ -34,7 +38,7 @@ const Payment = () => {
             <CheckText text={'Everything on Sonder Blue for one low price.'} />
             <CheckText text={'No ads and no extra fees.'} />
 
-            {/* Slider */}
+            <PaymentPlan data={payment} pagingEnabled={false} />
 
             <Text style={style.textDesc}>
               All pricing in USD and renews automatically unless cancelled.

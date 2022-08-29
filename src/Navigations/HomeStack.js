@@ -10,6 +10,7 @@ import QandA from 'src/Screens/QandA';
 import ContactUs from 'src/Screens/ContactUs';
 import Payment from 'src/Screens/Auth/Payment';
 import PaymentSummary from 'src/Screens/Auth/Payment/Summary';
+import Biography from 'src/Screens/Biography';
 const Stack = createStackNavigator();
 
 const HomeStack = () => {
@@ -18,6 +19,11 @@ const HomeStack = () => {
       <Stack.Screen
         name="Home"
         component={Home}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Biography"
+        component={Biography}
         options={{headerShown: false}}
       />
       <Stack.Screen
