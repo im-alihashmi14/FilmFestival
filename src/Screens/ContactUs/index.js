@@ -17,7 +17,7 @@ const ContactUs = () => {
   const style = useStyles();
   return (
     <ScrollView style={style.main}>
-      <Header />
+      <Header logo2 />
       <View style={style.container}>
         <View style={style.leftContainer}>
           <Text

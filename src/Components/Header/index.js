@@ -35,7 +35,7 @@ const navigation = [
   },
 ];
 
-const Header = ({left, right, iconColor, onPressIcon, onlyLogo}) => {
+const Header = ({left, right, iconColor, onPressIcon, onlyLogo, logo2}) => {
   const route = useRoute();
   const nav = useNavigation();
   const [visible, setVisible] = useState(false);
@@ -55,7 +55,11 @@ const Header = ({left, right, iconColor, onPressIcon, onlyLogo}) => {
       {left ?? (
         <TouchableOpacity>
           <Image
-            source={require('src/Asset/Images/logo.png')}
+            source={
+              logo2
+                ? require('src/Asset/Images/logo2.png')
+                : require('src/Asset/Images/logo.png')
+            }
             style={style.logoImage}
           />
         </TouchableOpacity>
@@ -118,14 +122,14 @@ const Header = ({left, right, iconColor, onPressIcon, onlyLogo}) => {
                   }
                   textSize={fontRef * 10}
                   // height={heightRef * 35}
-                  width={widthRef * 100}
+                  width={widthRef * 70}
                 />
               </View>
             </>
           )}
         </>
       )}
-      <Drawer visible={visible} setVisible={setVisible} nav={nav}/>
+      <Drawer visible={visible} setVisible={setVisible} nav={nav} />
     </View>
   );
 };

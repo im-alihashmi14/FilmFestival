@@ -22,13 +22,13 @@ import {director, Directors, Movies, slider} from 'src/JSON/home';
 import {useStyles} from './style';
 
 const Home = () => {
-  const {heightRef, widthRef, fullWidth} = useLayout();
+  const {heightRef, widthRef} = useLayout();
   const nav = useNavigation();
   const [id, setIndex] = useState(0);
   const Style = useStyles();
   return (
     <ScrollView
-      contentContainerStyle={{paddingBottom: heightRef * 80}}
+      contentContainerStyle={{paddingBottom: heightRef * 15}}
       style={Style.container}
       showsVerticalScrollIndicator={false}>
       <Gradient

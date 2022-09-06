@@ -14,7 +14,6 @@ import View from 'src/Components/View';
 import globalStyles from 'src/config/globalStyles';
 import {fontRef, heightRef, isPhone, widthRef} from 'src/config/screenSize';
 import {responsiveSize} from 'src/Helper/Responsive';
-import {director} from 'src/JSON/home';
 import {payment} from 'src/JSON/payment';
 import {useStyles} from './style';
 

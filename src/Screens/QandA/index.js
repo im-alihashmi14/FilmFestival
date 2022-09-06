@@ -89,7 +89,7 @@ const QandA = () => {
       contentContainerStyle={{paddingBottom: heightRef * 15}}
       style={style.main}
       showsVerticalScrollIndicator={false}>
-      <Header />
+      <Header logo2 />
       <View style={style.container}>
         <Text style={style.topText}>The FAQ’s</Text>
         <Text style={style.title}>Help Center</Text>

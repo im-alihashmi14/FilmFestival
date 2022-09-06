@@ -42,7 +42,7 @@ const TermsNConditions = () => {
       contentContainerStyle={{paddingBottom: heightRef * 15}}
       style={style.main}
       showsVerticalScrollIndicator={false}>
-      <Header />
+      <Header logo2 />
       <View style={style.container}>
         <Text style={style.header}>Terms & Conditions</Text>
         <Text style={style.headerDescription}>

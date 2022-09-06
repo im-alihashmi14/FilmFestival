@@ -42,7 +42,7 @@ const PrivacyPolicy = () => {
       contentContainerStyle={{paddingBottom: heightRef * 15}}
       style={style.main}
       showsVerticalScrollIndicator={false}>
-      <Header />
+      <Header logo2 />
       <View style={style.container}>
         <Text style={style.header}>Privacy and Policy</Text>
         <Text style={style.headerDescription}>

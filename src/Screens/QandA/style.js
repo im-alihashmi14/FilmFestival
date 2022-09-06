@@ -1,6 +1,7 @@
 import {makeUseStyles} from 'react-native-stylex';
 import globalStyles from 'src/config/globalStyles';
 import {fontRef, heightRef, isPhone, widthRef} from 'src/config/screenSize';
+import {responsiveSize} from 'src/Helper/Responsive';
 
 export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
   main: {
@@ -12,18 +13,18 @@ export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
     paddingVertical: heightRef * 20,
   },
   topText: {
-    fontSize: isPhone ? fontRef * 14 : fontRef * 20,
+    fontSize: responsiveSize({Tablet: 20, Handset: 14}) * fontRef,
     fontWeight: '400',
     color: globalStyles.Theme.white,
   },
   title2: {
-    fontSize: fontRef * 28,
+    fontSize: fontRef * responsiveSize({Tablet: 32, Handset: 28}),
     fontWeight: '600',
     color: globalStyles.Theme.SecondaryColor,
     lineHeight: fontRef * 42,
   },
   title: {
-    fontSize: fontRef * 42,
+    fontSize: responsiveSize({Tablet: 32, Handset: 42}) * fontRef,
     fontWeight: '500',
     lineHeight: fontRef * 60,
     color: globalStyles.Theme.white,
@@ -41,15 +42,15 @@ export const useStyles = makeUseStyles(({palette, utils, breakpoints}) => ({
     alignItems: 'center',
   },
   question: {
-    fontSize: isPhone ? fontRef * 14 : fontRef * 20,
+    fontSize: responsiveSize({Tablet: 16, Handset: 14}) * fontRef,
     fontWeight: '500',
     color: globalStyles.Theme.white,
   },
   answer: {
-    fontSize: isPhone ? fontRef * 10 : fontRef * 14,
+    fontSize: responsiveSize({Tablet: 14, Handset: 10}) * fontRef,
     fontWeight: '400',
-    color: globalStyles.Theme.white,
-    lineHeight: isPhone ? fontRef * 15 : fontRef * 21,
+    color: '#CBCACE',
+    lineHeight: responsiveSize({Tablet: 21, Handset: 15}) * fontRef,
   },
   answerContainer: {
     paddingTop: heightRef * 10,
