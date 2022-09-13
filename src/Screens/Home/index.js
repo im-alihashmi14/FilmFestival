@@ -2,6 +2,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {ScrollView} from 'react-native';
+import {useTheme} from 'react-native-stylex';
 import Asset from 'src/Asset';
 import BlurBackground from 'src/Components/BlurBackground';
 import Footer from 'src/Components/Footer';
@@ -164,7 +165,7 @@ const Home = () => {
 
           <GradientButton
             text={'Sign up'}
-            width={widthRef * 150}
+            width={150}
             style={{marginVertical: 40}}
             onPress={() =>
               nav.navigate('AuthStack', {

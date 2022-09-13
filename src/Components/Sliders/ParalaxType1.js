@@ -57,6 +57,7 @@ const ParalaxType1 = ({data, height, style, WIDTH, onIndexChange}) => {
       height={HEIGHT}
       width={WIDTH}
       style={style}
+      pagingEnabled={true}
       customAnimation={value => {
         'worklet';
 
